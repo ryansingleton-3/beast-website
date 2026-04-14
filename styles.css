@@ -14,7 +14,7 @@
 :root {
   --color-bg: #f5f6f7;
   --color-card: #ffffff;
-  --color-accent: #56A0D3;
+  --color-accent: #8AB9E3;
   --color-text: #111111;
   --color-muted: #666666;
   --color-border: #dde3ea;
@@ -94,7 +94,7 @@ nav {
 }
 
 .nav-cta:hover {
-  background: #4388B7;
+  background: #6C9DC6;
 }
 
 /* --- Hero --- */
@@ -194,7 +194,7 @@ nav {
 }
 
 .btn-primary:hover {
-  background: #4388B7;
+  background: #6C9DC6;
 }
 
 .btn-outline {
@@ -212,7 +212,7 @@ nav {
 }
 
 .btn-outline:hover {
-  background: rgba(86, 160, 211, 0.08);
+  background: rgba(138, 185, 227, 0.08);
 }
 
 /* Hero Right — Sport Cards */
@@ -238,7 +238,7 @@ nav {
 
 .sport-card:hover {
   transform: translateX(4px);
-  box-shadow: 0 2px 12px rgba(86, 160, 211, 0.1);
+  box-shadow: 0 2px 12px rgba(138, 185, 227, 0.1);
 }
 
 .sport-card:nth-child(even) {
@@ -610,7 +610,7 @@ footer {
 
 .credential-card:hover {
   transform: translateX(4px);
-  box-shadow: 0 2px 12px rgba(86, 160, 211, 0.08);
+  box-shadow: 0 2px 12px rgba(138, 185, 227, 0.08);
 }
 
 .credential-icon {
@@ -620,8 +620,8 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(86, 160, 211, 0.1);
-  border: 1px solid rgba(86, 160, 211, 0.3);
+  background: rgba(138, 185, 227, 0.1);
+  border: 1px solid rgba(138, 185, 227, 0.3);
   color: var(--color-accent);
   font-size: 1.1rem;
   font-weight: 700;
@@ -660,8 +660,8 @@ footer {
 .gallery-item {
   aspect-ratio: 4 / 3;
   background:
-    repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(86, 160, 211, 0.06) 30px),
-    repeating-linear-gradient(90deg, transparent, transparent 29px, rgba(86, 160, 211, 0.06) 30px),
+    repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(138, 185, 227, 0.06) 30px),
+    repeating-linear-gradient(90deg, transparent, transparent 29px, rgba(138, 185, 227, 0.06) 30px),
     #eef2f6;
   border: 1px solid var(--color-border);
   border-left: 3px solid var(--color-accent);
@@ -673,7 +673,7 @@ footer {
 }
 
 .gallery-item:hover {
-  box-shadow: 0 4px 16px rgba(86, 160, 211, 0.1);
+  box-shadow: 0 4px 16px rgba(138, 185, 227, 0.1);
   transform: translateY(-2px);
 }
 
@@ -722,7 +722,7 @@ footer {
 
 .story-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(86, 160, 211, 0.08);
+  box-shadow: 0 4px 16px rgba(138, 185, 227, 0.08);
 }
 
 .story-name {
@@ -742,7 +742,7 @@ footer {
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--color-accent);
-  border: 1px solid rgba(86, 160, 211, 0.4);
+  border: 1px solid rgba(138, 185, 227, 0.4);
   padding: 0.25rem 0.6rem;
   margin-bottom: 1rem;
 }
@@ -791,7 +791,7 @@ footer {
 
 .testimonial-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(86, 160, 211, 0.08);
+  box-shadow: 0 4px 16px rgba(138, 185, 227, 0.08);
 }
 
 .testimonial-text {
@@ -850,15 +850,15 @@ footer {
 
 .pricing-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(86, 160, 211, 0.1);
+  box-shadow: 0 6px 20px rgba(138, 185, 227, 0.1);
 }
 
 .pricing-card.featured {
   background: #f0f6fb;
-  border: 1px solid rgba(86, 160, 211, 0.4);
+  border: 1px solid rgba(138, 185, 227, 0.4);
   border-left: 3px solid var(--color-accent);
   transform: translateY(-8px);
-  box-shadow: 0 6px 24px rgba(86, 160, 211, 0.12);
+  box-shadow: 0 6px 24px rgba(138, 185, 227, 0.12);
 }
 
 .pricing-card.featured:hover {
@@ -955,7 +955,7 @@ footer {
 }
 
 .pricing-cta:hover {
-  background: #4388B7;
+  background: #6C9DC6;
 }
 
 .pricing-footnote {
@@ -990,7 +990,7 @@ footer {
 }
 
 .faq-item:hover {
-  box-shadow: 0 2px 10px rgba(86, 160, 211, 0.08);
+  box-shadow: 0 2px 10px rgba(138, 185, 227, 0.08);
 }
 
 .faq-question {
@@ -1086,8 +1086,8 @@ footer {
 .schedule-placeholder {
   min-height: 400px;
   background:
-    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(86, 160, 211, 0.07) 40px),
-    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(86, 160, 211, 0.07) 40px),
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(138, 185, 227, 0.07) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(138, 185, 227, 0.07) 40px),
     var(--color-bg);
   border: 1px solid var(--color-border);
   border-left: 3px solid var(--color-accent);
@@ -1236,7 +1236,7 @@ footer {
 }
 
 .form-submit:hover {
-  background: #4388B7;
+  background: #6C9DC6;
 }
 
 .forms-block {
@@ -1715,8 +1715,8 @@ footer {
   position: absolute;
   inset: 0;
   background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(86, 160, 211, 0.06) 60px),
-    repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(86, 160, 211, 0.06) 60px);
+    repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(138, 185, 227, 0.06) 60px),
+    repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(138, 185, 227, 0.06) 60px);
   pointer-events: none;
   z-index: 1;
 }
@@ -1724,7 +1724,7 @@ footer {
 /* Replace the sport-cards sidebar with a large logo display */
 .hero-logo-feature {
   background: #edf1f5;
-  border-left: 1px solid rgba(86, 160, 211, 0.15);
+  border-left: 1px solid rgba(138, 185, 227, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1737,7 +1737,7 @@ footer {
   max-width: 420px;
   height: auto;
   display: block;
-  filter: drop-shadow(0 0 40px rgba(86, 160, 211, 0.12));
+  filter: drop-shadow(0 0 40px rgba(138, 185, 227, 0.12));
 }
 
 /* Hide sport-card siblings inside this version of hero-right */
@@ -1777,7 +1777,7 @@ footer {
 }
 
 .sports-row-grid .sport-card:nth-child(even) {
-  border-left-color: #4388B7;
+  border-left-color: #6C9DC6;
 }
 
 .sports-row-grid .sport-name {
@@ -1925,8 +1925,8 @@ footer {
 }
 
 .merch-placeholder {
-  background: rgba(86, 160, 211, 0.08);
-  border: 1px dashed rgba(86, 160, 211, 0.3);
+  background: rgba(138, 185, 227, 0.08);
+  border: 1px dashed rgba(138, 185, 227, 0.3);
   aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
@@ -1960,7 +1960,7 @@ footer {
 .merch-footnote a {
   color: var(--color-accent);
   text-decoration: none;
-  border-bottom: 1px solid rgba(86, 160, 211, 0.4);
+  border-bottom: 1px solid rgba(138, 185, 227, 0.4);
 }
 
 .merch-footnote a:hover {
@@ -1986,7 +1986,7 @@ footer {
 .contact-info-value a {
   color: inherit;
   text-decoration: none;
-  border-bottom: 1px solid rgba(86, 160, 211, 0.3);
+  border-bottom: 1px solid rgba(138, 185, 227, 0.3);
   transition: border-color 0.2s ease;
 }
 
