@@ -1059,36 +1059,12 @@ footer {
   color: var(--color-muted);
 }
 
-.map-placeholder {
+.location-map iframe {
+  display: block;
+  width: 100%;
   aspect-ratio: 4 / 3;
-  background:
-    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(86, 160, 211, 0.08) 40px),
-    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(86, 160, 211, 0.08) 40px),
-    #eef2f6;
   border: 1px solid var(--color-border);
   border-left: 3px solid var(--color-accent);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.map-placeholder span {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--color-accent);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.map-placeholder small {
-  font-family: var(--font-label);
-  font-weight: 600;
-  font-size: 0.72rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--color-muted);
 }
 
 /* ============================================
@@ -1673,10 +1649,6 @@ footer {
 
   .location {
     padding: 3rem 20px;
-  }
-
-  .map-placeholder span {
-    font-size: 1.1rem;
   }
 
   .schedule {
