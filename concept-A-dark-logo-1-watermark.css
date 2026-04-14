@@ -1,0 +1,44 @@
+/* ============================================
+   B.E.A.S.T. — Concept A Dark
+   LOGO OPTION 1: Hero Watermark
+   Large faded logo behind hero content
+   ============================================ */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 900px;
+  height: auto;
+  opacity: 0.08;
+  filter: blur(1px);
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+}
+
+.hero-bg-grid {
+  z-index: 0;
+}
+
+.hero-left,
+.hero-right {
+  position: relative;
+  z-index: 2;
+}
+
+/* On mobile, push the watermark behind content but keep visibility */
+@media (max-width: 768px) {
+  .hero-watermark {
+    width: 120%;
+    max-width: none;
+    opacity: 0.06;
+  }
+}

@@ -1,0 +1,57 @@
+/* ============================================
+   B.E.A.S.T. — Concept A Dark
+   LOGO OPTION 4: Logo as Section Divider
+   Centered logo with horizontal lines on either side
+   between major sections
+   ============================================ */
+
+.logo-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 4rem 80px;
+  background: var(--color-bg);
+}
+
+.logo-divider img {
+  width: 110px;
+  height: auto;
+  flex-shrink: 0;
+  opacity: 0.95;
+}
+
+.logo-divider-line {
+  flex: 1;
+  max-width: 360px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(126, 184, 232, 0.3),
+    transparent
+  );
+}
+
+@media (max-width: 768px) {
+  .logo-divider {
+    padding: 3rem 40px;
+    gap: 1.5rem;
+  }
+  .logo-divider img {
+    width: 80px;
+  }
+  .logo-divider-line {
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-divider {
+    padding: 2.5rem 20px;
+    gap: 1rem;
+  }
+  .logo-divider img {
+    width: 65px;
+  }
+}

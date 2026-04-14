@@ -1,0 +1,107 @@
+/* ============================================
+   B.E.A.S.T. — Concept A Dark
+   LOGO OPTION 2: Logo Replaces Sport Cards Sidebar
+   Logo becomes the visual anchor of the hero
+   ============================================ */
+
+/* Replace the sport-cards sidebar with a large logo display */
+.hero-logo-feature {
+  background: #0e1214;
+  border-left: 1px solid rgba(126, 184, 232, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+}
+
+.hero-logo-feature img {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 0 40px rgba(126, 184, 232, 0.15));
+}
+
+/* Hide sport-card siblings inside this version of hero-right */
+.hero-logo-feature .sport-card {
+  display: none;
+}
+
+/* New row of sport cards below the hero */
+.sports-row {
+  padding: 4rem 80px;
+  background: #0d0d0d;
+  border-bottom: 1px solid rgba(126, 184, 232, 0.08);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.sports-row .section-label {
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--color-blue);
+  margin-bottom: 1.5rem;
+}
+
+.sports-row-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+.sports-row-grid .sport-card {
+  background: #111;
+  border: 1px solid #1a2530;
+  border-left: 3px solid var(--color-blue);
+  padding: 1.25rem 1.5rem;
+}
+
+.sports-row-grid .sport-card:nth-child(even) {
+  border-left-color: var(--color-blue-deep);
+}
+
+.sports-row-grid .sport-name {
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin-bottom: 0.4rem;
+}
+
+.sports-row-grid .sport-meta {
+  font-size: 0.78rem;
+  color: #4a5a6a;
+  font-family: var(--font-body);
+}
+
+@media (max-width: 1024px) {
+  .sports-row-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-logo-feature {
+    padding: 3rem 1.5rem;
+  }
+  .hero-logo-feature img {
+    max-width: 300px;
+  }
+  .sports-row {
+    padding: 3rem 40px;
+  }
+  .sports-row-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .sports-row {
+    padding: 2.5rem 20px;
+  }
+}

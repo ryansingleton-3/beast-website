@@ -1,0 +1,32 @@
+/* ============================================
+   B.E.A.S.T. — Concept A Dark
+   LOGO OPTION 3: Floating Logo Badge in Hero
+   Medium-sized logo positioned above the headline
+   ============================================ */
+
+.hero-left {
+  position: relative;
+}
+
+.hero-logo-badge {
+  display: block;
+  width: 180px;
+  height: auto;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(126, 184, 232, 0.2);
+  box-shadow: 0 0 30px rgba(126, 184, 232, 0.1);
+}
+
+@media (max-width: 768px) {
+  .hero-logo-badge {
+    width: 140px;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-logo-badge {
+    width: 110px;
+    margin-bottom: 1.25rem;
+  }
+}
