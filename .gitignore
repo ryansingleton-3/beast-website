@@ -3,3 +3,9 @@ Thumbs.db
 *.log
 .vscode/
 .idea/
+
+# Local Claude Code tooling/config
+.claude/
+
+# Source data with customer PII (emails) — text is used on the site, file stays local
+beast_testimonials.json

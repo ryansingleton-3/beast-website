@@ -1981,6 +1981,184 @@ footer {
 }
 
 /* ============================================
+   Athlete of the Month — Spotlight
+   ============================================ */
+.spotlight {
+  padding: 5rem 80px;
+  background: #f0f6fb;
+}
+
+.spotlight-card {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(138, 185, 227, 0.1);
+}
+
+.spotlight-photo {
+  position: relative;
+  min-height: 440px;
+}
+
+.spotlight-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.spotlight-photo-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(138, 185, 227, 0.06) 30px),
+    repeating-linear-gradient(90deg, transparent, transparent 29px, rgba(138, 185, 227, 0.06) 30px),
+    #eef2f6;
+}
+
+.spotlight-photo-placeholder span {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #9aa8b5;
+}
+
+.spotlight-month {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: var(--color-accent);
+  color: #ffffff;
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+}
+
+.spotlight-content {
+  padding: 2.75rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.spotlight-badge {
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+
+.spotlight-name {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  line-height: 1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+.spotlight-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.spotlight-tag {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border: 1px solid rgba(138, 185, 227, 0.4);
+  padding: 0.25rem 0.6rem;
+}
+
+.spotlight-body {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  line-height: 1.8;
+  margin-bottom: 1.75rem;
+}
+
+.spotlight-stats {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.75rem;
+}
+
+.spotlight-stat-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.spotlight-stat-label {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-top: 0.4rem;
+}
+
+.spotlight-quote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1.25rem;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+  .spotlight {
+    padding: 4rem 40px;
+  }
+  .spotlight-card {
+    grid-template-columns: 1fr;
+  }
+  .spotlight-photo {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .spotlight {
+    padding: 3rem 20px;
+  }
+  .spotlight-content {
+    padding: 2rem 1.5rem;
+  }
+  .spotlight-name {
+    font-size: 2rem;
+  }
+  .spotlight-stats {
+    gap: 1.5rem;
+  }
+}
+
+/* ============================================
    Contact — email link styling
    ============================================ */
 .contact-info-value a {
