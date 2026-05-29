@@ -1,0 +1,125 @@
+{%- comment -%}
+  B.E.A.S.T. — Athlete of the Month spotlight.
+  Fully editable from the theme customizer: photo, month, name, tags,
+  write-up, quote, and add/remove stat blocks.
+{%- endcomment -%}
+
+<section class="beast-section beast-spotlight">
+  <div class="beast-wrap">
+    {%- if section.settings.label != blank -%}
+      <p class="beast-section-label">{{ section.settings.label | escape }}</p>
+    {%- endif -%}
+    {%- if section.settings.title != blank -%}
+      <h2 class="beast-section-title">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+
+    <div class="beast-spotlight-card">
+      <div class="beast-spotlight-photo">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 900
+            | image_tag: loading: 'lazy', widths: '450, 660, 900, 1200', alt: section.settings.athlete_name
+          }}
+        {%- else -%}
+          <div class="beast-spotlight-ph"><span>Athlete Photo</span></div>
+        {%- endif -%}
+        {%- if section.settings.month != blank -%}
+          <div class="beast-spotlight-month">{{ section.settings.month | escape }}</div>
+        {%- endif -%}
+      </div>
+
+      <div class="beast-spotlight-content">
+        {%- if section.settings.badge != blank -%}
+          <div class="beast-spotlight-badge">{{ section.settings.badge | escape }}</div>
+        {%- endif -%}
+        {%- if section.settings.athlete_name != blank -%}
+          <h3 class="beast-spotlight-name">{{ section.settings.athlete_name | escape }}</h3>
+        {%- endif -%}
+
+        {%- if section.settings.tag1 != blank or section.settings.tag2 != blank -%}
+          <div class="beast-spotlight-tags">
+            {%- if section.settings.tag1 != blank -%}
+              <span class="beast-spotlight-tag">{{ section.settings.tag1 | escape }}</span>
+            {%- endif -%}
+            {%- if section.settings.tag2 != blank -%}
+              <span class="beast-spotlight-tag">{{ section.settings.tag2 | escape }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.body != blank -%}
+          <div class="beast-spotlight-body rte">{{ section.settings.body }}</div>
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <div class="beast-spotlight-stats">
+            {%- for block in section.blocks -%}
+              <div class="beast-spotlight-stat" {{ block.shopify_attributes }}>
+                <div class="beast-spotlight-stat-num">{{ block.settings.value | escape }}</div>
+                <div class="beast-spotlight-stat-label">{{ block.settings.label | escape }}</div>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.quote != blank -%}
+          <blockquote class="beast-spotlight-quote">{{ section.settings.quote }}</blockquote>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Athlete of the Month",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "header", "content": "Section header" },
+    { "type": "text", "id": "label", "label": "Eyebrow label", "default": "Athlete of the Month" },
+    { "type": "text", "id": "title", "label": "Title", "default": "In The Spotlight" },
+    { "type": "header", "content": "Athlete" },
+    { "type": "image_picker", "id": "image", "label": "Photo" },
+    { "type": "text", "id": "month", "label": "Month badge", "default": "May 2026" },
+    { "type": "text", "id": "badge", "label": "Badge text", "default": "★ Athlete of the Month" },
+    { "type": "text", "id": "athlete_name", "label": "Athlete name", "default": "Athlete Name" },
+    { "type": "text", "id": "tag1", "label": "Tag 1 (sport / program)", "default": "Youth Baseball" },
+    { "type": "text", "id": "tag2", "label": "Tag 2 (age, etc.)", "default": "Age 12" },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Write-up",
+      "default": "<p>Tell this athlete's story here — what they've worked on, how far they've come, and what earned them the spotlight this month.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "quote",
+      "label": "Quote",
+      "default": "<p>Add a short quote from the athlete or their parent about training at B.E.A.S.T.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Value", "default": "6" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Months Training" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Athlete of the Month",
+      "blocks": [
+        { "type": "stat", "settings": { "value": "6", "label": "Months Training" } },
+        { "type": "stat", "settings": { "value": "3x", "label": "Sessions / Week" } },
+        { "type": "stat", "settings": { "value": ".380", "label": "Batting Avg" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

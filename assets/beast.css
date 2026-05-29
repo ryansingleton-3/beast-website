@@ -1,0 +1,197 @@
+/* ============================================
+   B.E.A.S.T. — brand styles layered on Dawn
+   Carolina-blue accent, display + condensed type.
+   All classes are namespaced `beast-` so they never
+   collide with Dawn's own styles.
+   ============================================ */
+:root {
+  --beast-accent: #8AB9E3;
+  --beast-accent-dark: #6C9DC6;
+  --beast-text: #111111;
+  --beast-muted: #666666;
+  --beast-border: #dde3ea;
+  --beast-card: #ffffff;
+  --beast-font-display: 'Rubik Dirt', cursive;
+  --beast-font-label: 'Barlow Condensed', sans-serif;
+  --beast-font-body: 'Barlow', sans-serif;
+}
+
+/* --- Shared section scaffolding --- */
+.beast-section { padding: 5rem 5vw; }
+.beast-wrap { max-width: 1280px; margin: 0 auto; }
+
+.beast-section-label {
+  font-family: var(--beast-font-label);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--beast-accent);
+  margin: 0 0 0.6rem;
+}
+
+.beast-section-title {
+  font-family: var(--beast-font-display);
+  font-size: 3rem;
+  line-height: 1.05;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--beast-text);
+  margin: 0 0 2.5rem;
+}
+
+/* --- Athlete of the Month — spotlight --- */
+.beast-spotlight { background: #f0f6fb; }
+
+.beast-spotlight-card {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  background: var(--beast-card);
+  border: 1px solid var(--beast-border);
+  border-left: 3px solid var(--beast-accent);
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(138, 185, 227, 0.1);
+}
+
+.beast-spotlight-photo { position: relative; min-height: 440px; }
+
+.beast-spotlight-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.beast-spotlight-ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(138, 185, 227, 0.06) 30px),
+    repeating-linear-gradient(90deg, transparent, transparent 29px, rgba(138, 185, 227, 0.06) 30px),
+    #eef2f6;
+}
+
+.beast-spotlight-ph span {
+  font-family: var(--beast-font-label);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #9aa8b5;
+}
+
+.beast-spotlight-month {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: var(--beast-accent);
+  color: #ffffff;
+  font-family: var(--beast-font-label);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+}
+
+.beast-spotlight-content {
+  padding: 2.75rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.beast-spotlight-badge {
+  font-family: var(--beast-font-label);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--beast-accent);
+  margin-bottom: 0.75rem;
+}
+
+.beast-spotlight-name {
+  font-family: var(--beast-font-display);
+  font-size: 2.5rem;
+  line-height: 1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--beast-text);
+  margin: 0 0 1rem;
+}
+
+.beast-spotlight-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.beast-spotlight-tag {
+  font-family: var(--beast-font-label);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--beast-accent);
+  border: 1px solid rgba(138, 185, 227, 0.4);
+  padding: 0.25rem 0.6rem;
+}
+
+.beast-spotlight-body {
+  font-family: var(--beast-font-body);
+  font-size: 0.95rem;
+  color: var(--beast-muted);
+  line-height: 1.8;
+  margin-bottom: 1.75rem;
+}
+.beast-spotlight-body > :last-child { margin-bottom: 0; }
+
+.beast-spotlight-stats {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.75rem;
+}
+
+.beast-spotlight-stat-num {
+  font-family: var(--beast-font-display);
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--beast-accent);
+}
+
+.beast-spotlight-stat-label {
+  font-family: var(--beast-font-label);
+  font-weight: 600;
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--beast-muted);
+  margin-top: 0.4rem;
+}
+
+.beast-spotlight-quote {
+  border-left: 3px solid var(--beast-accent);
+  padding-left: 1.25rem;
+  font-family: var(--beast-font-body);
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--beast-text);
+  margin: 0;
+}
+.beast-spotlight-quote > :last-child { margin-bottom: 0; }
+
+@media screen and (max-width: 749px) {
+  .beast-section { padding: 3rem 5vw; }
+  .beast-section-title { font-size: 2.2rem; }
+  .beast-spotlight-card { grid-template-columns: 1fr; }
+  .beast-spotlight-photo { min-height: 300px; }
+  .beast-spotlight-content { padding: 2rem 1.5rem; }
+  .beast-spotlight-name { font-size: 2rem; }
+}

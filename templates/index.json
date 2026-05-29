@@ -48,6 +48,16 @@
         "show_text_below": false
       }
     },
+    "athlete_of_the_month": {
+      "type": "athlete-of-the-month",
+      "blocks": {
+        "stat1": { "type": "stat", "settings": { "value": "6", "label": "Months Training" } },
+        "stat2": { "type": "stat", "settings": { "value": "3x", "label": "Sessions / Week" } },
+        "stat3": { "type": "stat", "settings": { "value": ".380", "label": "Batting Avg" } }
+      },
+      "block_order": ["stat1", "stat2", "stat3"],
+      "settings": {}
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -79,6 +89,7 @@
   },
   "order": [
     "image_banner",
+    "athlete_of_the_month",
     "featured_collection"
   ]
 }
