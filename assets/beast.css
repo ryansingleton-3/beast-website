@@ -18,6 +18,12 @@
   --beast-font-body: 'Barlow', sans-serif;
 }
 
+/* Dawn sets the root to 62.5% (1rem = 10px); the B.E.A.S.T. design was authored
+   for a 16px root, so everything rendered ~62% too small. Restore a 16px root
+   (loaded after Dawn's base styles, so this wins) — type AND spacing now match
+   the design reference. Lower this one value (e.g. 94%) if it ends up too large. */
+html { font-size: 100%; }
+
 /* --- Scroll / entrance animations --- */
 .beast-fade { opacity: 0; transform: translateY(32px); transition: opacity .9s cubic-bezier(.22,.61,.36,1), transform .9s cubic-bezier(.22,.61,.36,1); will-change: opacity, transform; }
 .beast-fade.is-visible { opacity: 1; transform: translateY(0); }
