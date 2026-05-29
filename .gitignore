@@ -9,3 +9,7 @@ Thumbs.db
 
 # Source data with customer PII (emails) — text is used on the site, file stays local
 beast_testimonials.json
+
+# Heavy stock photos kept off the theme branch (Shopify 50MB limit).
+# Full set preserved on the 'design-reference' branch and on disk locally.
+_design-reference/Images/
