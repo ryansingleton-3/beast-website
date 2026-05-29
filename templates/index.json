@@ -1,52 +1,74 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "hero": { "type": "beast-hero", "settings": {} },
+    "ticker": {
+      "type": "beast-ticker",
       "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
+        "t1": { "type": "item", "settings": { "text": "Baseball & Softball" } },
+        "t2": { "type": "item", "settings": { "text": "Personal 1-on-1 Training" } },
+        "t3": { "type": "item", "settings": { "text": "Football" } },
+        "t4": { "type": "item", "settings": { "text": "Speed & Agility" } },
+        "t5": { "type": "item", "settings": { "text": "Youth Programs" } },
+        "t6": { "type": "item", "settings": { "text": "Adult Strength & Nutrition" } }
       },
-      "block_order": [
-        "heading",
-        "button"
-      ],
-      "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
+      "block_order": ["t1", "t2", "t3", "t4", "t5", "t6"],
+      "settings": {}
+    },
+    "programs": {
+      "type": "beast-programs",
+      "blocks": {
+        "p1": { "type": "program", "settings": { "name": "Baseball & Softball", "description": "Youth skills development — hitting, fielding, throwing mechanics, position-specific training, plus mental focus and toughness training." } },
+        "p2": { "type": "program", "settings": { "name": "Personal 1-on-1 Training", "description": "Individual coaching for adults and kids — strength, conditioning, programming, and nutrition guidance for adult clients looking to build real results." } },
+        "p3": { "type": "program", "settings": { "name": "Football", "description": "Speed, agility, and sport-specific strength for skill positions at every level." } },
+        "p4": { "type": "program", "settings": { "name": "Speed & Agility", "description": "Explosive quickness, lateral movement, and conditioning for athletes of all ages." } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4"],
+      "settings": {}
+    },
+    "stats": {
+      "type": "beast-stats",
+      "blocks": {
+        "s1": { "type": "stat", "settings": { "value": "20+", "count_to": 20, "suffix": "+", "label": "Years Coaching" } },
+        "s2": { "type": "stat", "settings": { "value": "500+", "count_to": 500, "suffix": "+", "label": "Athletes Trained" } },
+        "s3": { "type": "stat", "settings": { "value": "6+", "label": "Ages Trained" } },
+        "s4": { "type": "stat", "settings": { "value": "1-on-1", "label": "Personalized Coaching" } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"],
+      "settings": {}
+    },
+    "about": { "type": "beast-about", "settings": {} },
+    "gallery": {
+      "type": "beast-gallery",
+      "blocks": {
+        "g1": { "type": "photo", "settings": {} },
+        "g2": { "type": "photo", "settings": {} },
+        "g3": { "type": "photo", "settings": {} },
+        "g4": { "type": "photo", "settings": {} },
+        "g5": { "type": "photo", "settings": {} },
+        "g6": { "type": "photo", "settings": {} }
+      },
+      "block_order": ["g1", "g2", "g3", "g4", "g5", "g6"],
+      "settings": {}
+    },
+    "why": {
+      "type": "beast-why",
+      "blocks": {
+        "w1": { "type": "reason", "settings": { "title": "Technique First", "description": "Every session starts with fundamentals. We build athletes from the ground up — no shortcuts." } },
+        "w2": { "type": "reason", "settings": { "title": "All Ages Welcome", "description": "From youth athletes ages 6+ to adults chasing real results. Every skill level has a place here." } },
+        "w3": { "type": "reason", "settings": { "title": "Proven Results", "description": "500+ athletes trained across baseball, softball, football, speed & agility, and personal training." } }
+      },
+      "block_order": ["w1", "w2", "w3"],
+      "settings": {}
+    },
+    "stories": {
+      "type": "beast-stories",
+      "blocks": {
+        "st1": { "type": "story", "settings": { "name": "Jake M.", "tag": "Youth Baseball", "body": "<p>Started training before his 12U season — went from JV bench to leading his team in batting average. Mechanics work and weekly hitting sessions transformed his approach at the plate.</p>" } },
+        "st2": { "type": "story", "settings": { "name": "Sarah L.", "tag": "High School Softball", "body": "<p>Came in with confidence issues and an inconsistent swing. Three months of mechanics-focused training built her into a varsity starter and team captain.</p>" } },
+        "st3": { "type": "story", "settings": { "name": "Mike R.", "tag": "Adult Personal Training", "body": "<p>Lost 25 pounds and added serious strength over 6 months of 1-on-1 sessions. First time he's seeing real results after years of inconsistent gym workouts.</p>" } }
+      },
+      "block_order": ["st1", "st2", "st3"],
+      "settings": {}
     },
     "athlete_of_the_month": {
       "type": "athlete-of-the-month",
@@ -58,38 +80,102 @@
       "block_order": ["stat1", "stat2", "stat3"],
       "settings": {}
     },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
-      }
+    "testimonials": {
+      "type": "beast-testimonials",
+      "blocks": {
+        "r1": { "type": "review", "settings": { "text": "My son started throwing in the high 40s MPH, and after just 3-4 sessions, he was consistently throwing in the 60s. That kind of jump, just from refining technique, speaks volumes about Bastian's eye and knowledge.", "author": "— Wiff J., Parent of a 14-Year-Old Player" } },
+        "r2": { "type": "review", "settings": { "text": "He went from being afraid of a baseball to catching them in just a few months. His hitting has improved 100% since we started lessons. Coach B knows how to push him to do his best while keeping the practices fun and supportive.", "author": "— Kristi, Grandmother of Athlete" } },
+        "r3": { "type": "review", "settings": { "text": "It's truly something special to see him work effectively with my 15-year-old, my 10-year-old, and even my little 6-year-old who's just starting out. He genuinely understands how to bring out the best in each of them.", "author": "— Heather S., Parent of Three" } },
+        "r4": { "type": "review", "settings": { "text": "Bastian has been working with my son since he was 7 years old, and the impact has been incredible. A great coach for young kids needs two things: real knowledge of the game and the ability to teach it in a fun, engaging way. Bastian excels at both.", "author": "— Phillip R., Baseball Parent (7+ Years)" } },
+        "r5": { "type": "review", "settings": { "text": "Through a combination of technical knowledge, motivational support, and genuine care, Coach Bastian helped both athletes achieve significant improvements in strength, agility, and overall performance in their respective sports programs. Their progress was not limited to physical gains; Coach Bastian also fostered confidence, discipline, and a strong work ethic in both athletes.", "author": "— Jason P., Parent of Two Athletes" } },
+        "r6": { "type": "review", "settings": { "text": "BEAST is the best spot for all around training! Bastian does a great job at adapting to different clients, he programmed excellent and thorough workouts for me and also able to adapt for training younger kids. Kept my boys engaged and challenged the whole time.", "author": "— Ryan F., Adult Client & Parent" } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4", "r5", "r6"],
+      "settings": {}
+    },
+    "pricing": {
+      "type": "beast-pricing",
+      "blocks": {
+        "pl1": { "type": "plan", "settings": { "tier": "Drop-In Session", "price": "$65", "period": "/session", "save": "Pay as you go", "features": "1 training session\nAny program\n60 minutes", "cta_label": "Book Single Session" } },
+        "pl2": { "type": "plan", "settings": { "tier": "4-Session Pack", "price": "$220", "period": "/pack", "save": "$55/session · Save $40", "features": "4 training sessions\n60 minutes each\nAny program", "cta_label": "Get Started", "featured": true, "badge": "Most Popular" } },
+        "pl3": { "type": "plan", "settings": { "tier": "10-Session Pack", "price": "$500", "period": "/pack", "save": "$50/session · Save $150 (Best Value)", "features": "10 training sessions\n60 minutes each\nAny program\nPriority scheduling", "cta_label": "Best Value" } },
+        "ex1": { "type": "extra", "settings": { "name": "30-min Session", "price": "$40" } },
+        "ex2": { "type": "extra", "settings": { "name": "45-min Session", "price": "$55" } },
+        "ex3": { "type": "extra", "settings": { "name": "Goal-Setting Consultation", "price": "$50 · 45 min", "note": "No commitment required" } },
+        "ex4": { "type": "extra", "settings": { "name": "Team Packages", "price": "Custom Pricing", "note": "Contact Bastian for details" } }
+      },
+      "block_order": ["pl1", "pl2", "pl3", "ex1", "ex2", "ex3", "ex4"],
+      "settings": {}
+    },
+    "merch": {
+      "type": "beast-merch",
+      "blocks": {
+        "m1": { "type": "item", "settings": { "emoji": "👕", "name": "B.E.A.S.T. T-Shirt", "note": "Contact Bastian to purchase" } },
+        "m2": { "type": "item", "settings": { "emoji": "🧥", "name": "Training Hoodie", "note": "Contact Bastian to purchase" } },
+        "m3": { "type": "item", "settings": { "emoji": "🧢", "name": "Logo Cap", "note": "Contact Bastian to purchase" } },
+        "m4": { "type": "item", "settings": { "emoji": "🎒", "name": "Training Bag", "note": "Contact Bastian to purchase" } }
+      },
+      "block_order": ["m1", "m2", "m3", "m4"],
+      "settings": {}
+    },
+    "faq": {
+      "type": "beast-faq",
+      "blocks": {
+        "f1": { "type": "qa", "settings": { "question": "What ages do you train?", "answer": "<p>We work with athletes from ages 6 through adulthood. Youth, middle school, high school, and adult personal training are all available.</p>" } },
+        "f2": { "type": "qa", "settings": { "question": "Where are sessions held?", "answer": "<p>Sessions take place at our training facility. See the Location section below for the full address and directions.</p>" } },
+        "f3": { "type": "qa", "settings": { "question": "How long is each session?", "answer": "<p>Sessions are available in 30-minute ($40), 45-minute ($55), and 60-minute ($65) formats depending on the program and athlete.</p>" } },
+        "f4": { "type": "qa", "settings": { "question": "How is availability determined?", "answer": "<p>A combination of online scheduling and in-person scheduling. Training schedules are formed weekly — contact Bastian to confirm open slots for the coming week.</p>" } },
+        "f5": { "type": "qa", "settings": { "question": "Do you offer group or team training?", "answer": "<p>Yes — team packages are available with custom pricing. Contact Bastian directly to discuss your team's needs.</p>" } },
+        "f6": { "type": "qa", "settings": { "question": "What should my child bring?", "answer": "<p>Athletic clothing, sneakers (or cleats for field work), a water bottle, and any sport-specific gear (glove, bat, etc.). If equipment is forgotten, Bastian has gear on hand to use for the session.</p>" } },
+        "f7": { "type": "qa", "settings": { "question": "What's your cancellation policy?", "answer": "<p>We ask for at least 24 hours notice for cancellations. Sessions cancelled with less notice may be charged.</p>" } },
+        "f8": { "type": "qa", "settings": { "question": "Is the first session free?", "answer": "<p>No — the first session is not free. If you want to meet Bastian and set goals before committing to training, book a 45-minute goal-setting consultation for $50. There's no commitment required after the consultation.</p>" } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8"],
+      "settings": {}
+    },
+    "location": {
+      "type": "beast-location",
+      "blocks": {
+        "l1": { "type": "info", "settings": { "title": "B.E.A.S.T. Training Facility", "content": "<p>1558 Bridgewood Rd<br>Clarksville, TN 37040</p>" } },
+        "l2": { "type": "info", "settings": { "title": "Hours", "content": "<p>Monday – Friday: 10:00 AM – 9:00 PM<br>Saturday: 7:00 AM – 3:00 PM<br>Sunday: Closed</p>" } },
+        "l3": { "type": "info", "settings": { "title": "Service Area", "content": "<p>Serving athletes throughout the region — including youth and high school programs in surrounding towns.</p>" } }
+      },
+      "block_order": ["l1", "l2", "l3"],
+      "settings": {}
+    },
+    "schedule": { "type": "beast-schedule", "settings": {} },
+    "booking": { "type": "beast-booking", "settings": {} },
+    "contact": {
+      "type": "beast-contact",
+      "blocks": {
+        "ci1": { "type": "info_item", "settings": { "icon": "✉", "label": "Email", "value": "<p>borowikseliteathletics@gmail.com</p>" } },
+        "ci2": { "type": "info_item", "settings": { "icon": "📍", "label": "Location", "value": "<p>1558 Bridgewood Road</p>" } },
+        "ci3": { "type": "info_item", "settings": { "icon": "🕐", "label": "Hours", "value": "<p>Mon–Fri 10 AM – 9 PM · Sat 7 AM – 3 PM · Closed Sun</p>" } },
+        "d1": { "type": "download", "settings": { "name": "Liability Waiver", "format": "PDF Download" } },
+        "d2": { "type": "download", "settings": { "name": "Athlete Intake Form", "format": "PDF Download" } },
+        "d3": { "type": "download", "settings": { "name": "Medical Information Form", "format": "PDF Download" } }
+      },
+      "block_order": ["ci1", "ci2", "ci3", "d1", "d2", "d3"],
+      "settings": {}
     }
   },
   "order": [
-    "image_banner",
+    "hero",
+    "ticker",
+    "programs",
+    "stats",
+    "about",
+    "gallery",
+    "why",
+    "stories",
     "athlete_of_the_month",
-    "featured_collection"
+    "testimonials",
+    "pricing",
+    "merch",
+    "faq",
+    "location",
+    "schedule",
+    "booking",
+    "contact"
   ]
 }

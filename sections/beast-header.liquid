@@ -1,0 +1,42 @@
+{%- comment -%} B.E.A.S.T. — site header / navigation {%- endcomment -%}
+<header class="beast-nav">
+  <a href="{{ section.settings.logo_link | default: routes.root_url }}" class="beast-nav-logo">
+    {%- if section.settings.logo != blank -%}
+      {{ section.settings.logo | image_url: width: 220 | image_tag: loading: 'eager', widths: '110, 220, 330', alt: shop.name }}
+    {%- else -%}
+      <img src="{{ 'beast-logo.png' | asset_url }}" alt="{{ shop.name | escape }}" width="1080" height="1080" loading="eager">
+    {%- endif -%}
+  </a>
+
+  <nav class="beast-nav-links">
+    {%- for block in section.blocks -%}
+      <a href="{{ block.settings.link }}" class="beast-nav-link" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</a>
+    {%- endfor -%}
+  </nav>
+
+  {%- if section.settings.cta_label != blank -%}
+    <a href="{{ section.settings.cta_link | default: '#booking' }}" class="beast-nav-cta">{{ section.settings.cta_label | escape }}</a>
+  {%- endif -%}
+</header>
+
+{% schema %}
+{
+  "name": "B.E.A.S.T. Header",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo (defaults to B.E.A.S.T. logo)" },
+    { "type": "url", "id": "logo_link", "label": "Logo link" },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Book a Session" },
+    { "type": "text", "id": "cta_link", "label": "Button link (e.g. #booking)", "default": "#booking" }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Nav link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "About" },
+        { "type": "text", "id": "link", "label": "Link (e.g. #about)", "default": "#about" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,117 @@
+{%- comment -%} B.E.A.S.T. — contact + forms {%- endcomment -%}
+{%- assign info_items = section.blocks | where: 'type', 'info_item' -%}
+{%- assign downloads = section.blocks | where: 'type', 'download' -%}
+<section class="beast-section beast-section--bg beast-fade" id="contact">
+  <div class="beast-wrap">
+    {%- if section.settings.label != blank -%}<p class="beast-section-label">{{ section.settings.label | escape }}</p>{%- endif -%}
+    {%- if section.settings.title != blank -%}<h2 class="beast-section-title">{{ section.settings.title | escape }}</h2>{%- endif -%}
+    <div class="beast-contact-grid">
+      <div class="beast-contact-left">
+        {%- if info_items.size > 0 -%}
+          <div class="beast-contact-info">
+            {%- for block in info_items -%}
+              <div class="beast-contact-item" {{ block.shopify_attributes }}>
+                <span class="beast-contact-icon">{{ block.settings.icon | default: '•' }}</span>
+                <div>
+                  <div class="beast-contact-label">{{ block.settings.label | escape }}</div>
+                  <div class="beast-contact-value">{{ block.settings.value }}</div>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        {%- form 'contact' -%}
+          <div class="beast-form">
+            {%- if form.posted_successfully? -%}
+              <p class="beast-form-note">Thanks — your message was sent. Bastian will be in touch soon.</p>
+            {%- endif -%}
+            <div class="beast-field">
+              <label for="beast-name">Name</label>
+              <input type="text" id="beast-name" name="contact[name]" placeholder="Your name" required>
+            </div>
+            <div class="beast-field">
+              <label for="beast-email">Email</label>
+              <input type="email" id="beast-email" name="contact[email]" placeholder="you@email.com" required>
+            </div>
+            <div class="beast-field">
+              <label for="beast-phone">Phone</label>
+              <input type="tel" id="beast-phone" name="contact[phone]" placeholder="(555) 123-4567">
+            </div>
+            <div class="beast-field">
+              <label for="beast-message">Message</label>
+              <textarea id="beast-message" name="contact[body]" rows="4" placeholder="Tell us about your goals..." required></textarea>
+            </div>
+            <button type="submit" class="beast-form-submit">{{ section.settings.submit_label | default: 'Send Message' }}</button>
+          </div>
+        {%- endform -%}
+      </div>
+
+      <div class="beast-contact-right">
+        <div class="beast-forms-block">
+          {%- if section.settings.forms_title != blank -%}<h3 class="beast-forms-title">{{ section.settings.forms_title | escape }}</h3>{%- endif -%}
+          {%- if section.settings.forms_desc != blank -%}<p class="beast-forms-desc">{{ section.settings.forms_desc | escape }}</p>{%- endif -%}
+          <div class="beast-forms-list">
+            {%- for block in downloads -%}
+              <a href="{{ block.settings.link | default: '#' }}" class="beast-form-dl" {{ block.shopify_attributes }}{% if block.settings.link != blank %} download{% endif %}>
+                <span class="beast-form-dl-icon">📄</span>
+                <div>
+                  <div class="beast-form-dl-name">{{ block.settings.name | escape }}</div>
+                  <div class="beast-form-dl-fmt">{{ block.settings.format | default: 'PDF Download' }}</div>
+                </div>
+              </a>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "B.E.A.S.T. Contact",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Eyebrow label", "default": "Contact" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Get In Touch" },
+    { "type": "text", "id": "submit_label", "label": "Submit button label", "default": "Send Message" },
+    { "type": "header", "content": "Forms & Documents panel" },
+    { "type": "text", "id": "forms_title", "label": "Panel title", "default": "Forms & Documents" },
+    { "type": "textarea", "id": "forms_desc", "label": "Panel description", "default": "Save time at your first session. Download these forms in advance:" }
+  ],
+  "blocks": [
+    {
+      "type": "info_item",
+      "name": "Contact info item",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Icon (emoji)", "default": "✉" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Email" },
+        { "type": "richtext", "id": "value", "label": "Value", "default": "<p>borowikseliteathletics@gmail.com</p>" }
+      ]
+    },
+    {
+      "type": "download",
+      "name": "Form download",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name", "default": "Liability Waiver" },
+        { "type": "text", "id": "format", "label": "Format label", "default": "PDF Download" },
+        { "type": "url", "id": "link", "label": "File link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "B.E.A.S.T. Contact",
+      "blocks": [
+        { "type": "info_item", "settings": { "icon": "✉", "label": "Email", "value": "<p>borowikseliteathletics@gmail.com</p>" } },
+        { "type": "info_item", "settings": { "icon": "📍", "label": "Location", "value": "<p>1558 Bridgewood Road</p>" } },
+        { "type": "info_item", "settings": { "icon": "🕐", "label": "Hours", "value": "<p>Mon–Fri 10 AM – 9 PM · Sat 7 AM – 3 PM · Closed Sun</p>" } },
+        { "type": "download", "settings": { "name": "Liability Waiver", "format": "PDF Download" } },
+        { "type": "download", "settings": { "name": "Athlete Intake Form", "format": "PDF Download" } },
+        { "type": "download", "settings": { "name": "Medical Information Form", "format": "PDF Download" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,31 @@
+{%- comment -%} B.E.A.S.T. — about the coach {%- endcomment -%}
+<section class="beast-section beast-section--card beast-fade" id="about">
+  <div class="beast-wrap beast-about-grid">
+    <div class="beast-about-content">
+      {%- if section.settings.label != blank -%}<p class="beast-section-label">{{ section.settings.label | escape }}</p>{%- endif -%}
+      {%- if section.settings.title != blank -%}<h2 class="beast-section-title">{{ section.settings.title | escape }}</h2>{%- endif -%}
+      {%- if section.settings.body != blank -%}<div class="rte">{{ section.settings.body }}</div>{%- endif -%}
+    </div>
+    <div class="beast-about-photo">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '450, 700, 900', alt: section.settings.title }}
+      {%- else -%}
+        <img src="{{ 'beast-coach.jpg' | asset_url }}" alt="{{ section.settings.title | escape }}" width="1179" height="1171" loading="lazy">
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "B.E.A.S.T. About",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Eyebrow label", "default": "Meet the Coach" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Bastian Borowik" },
+    { "type": "richtext", "id": "body", "label": "Body", "default": "<p>With over two decades of hands-on coaching experience, Bastian Borowik built B.E.A.S.T. to give every athlete — from 6-year-old beginners to competitive adults — access to elite-level training. His approach is simple: master the fundamentals, build real confidence, and compete at your highest level.</p>" },
+    { "type": "image_picker", "id": "image", "label": "Coach photo" }
+  ],
+  "presets": [{ "name": "B.E.A.S.T. About" }]
+}
+{% endschema %}

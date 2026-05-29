@@ -1,0 +1,43 @@
+{%- comment -%} B.E.A.S.T. — stats bar {%- endcomment -%}
+<div class="beast-stats beast-stagger">
+  {%- for block in section.blocks -%}
+    <div class="beast-stat" {{ block.shopify_attributes }}>
+      {%- if block.settings.count_to > 0 -%}
+        <div class="beast-stat-num" data-beast-counter="{{ block.settings.count_to }}" data-beast-suffix="{{ block.settings.suffix | escape }}">{{ block.settings.count_to }}{{ block.settings.suffix | escape }}</div>
+      {%- else -%}
+        <div class="beast-stat-num">{{ block.settings.value | escape }}</div>
+      {%- endif -%}
+      <div class="beast-stat-label">{{ block.settings.label | escape }}</div>
+    </div>
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "B.E.A.S.T. Stats",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Value (used if not animating)", "default": "6+" },
+        { "type": "number", "id": "count_to", "label": "Animate count up to (leave blank for static)" },
+        { "type": "text", "id": "suffix", "label": "Suffix for animated value", "default": "+" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Label" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "B.E.A.S.T. Stats",
+      "blocks": [
+        { "type": "stat", "settings": { "value": "20+", "count_to": 20, "suffix": "+", "label": "Years Coaching" } },
+        { "type": "stat", "settings": { "value": "500+", "count_to": 500, "suffix": "+", "label": "Athletes Trained" } },
+        { "type": "stat", "settings": { "value": "6+", "label": "Ages Trained" } },
+        { "type": "stat", "settings": { "value": "1-on-1", "label": "Personalized Coaching" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

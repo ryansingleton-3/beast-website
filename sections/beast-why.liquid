@@ -1,0 +1,46 @@
+{%- comment -%} B.E.A.S.T. — why train with us {%- endcomment -%}
+<section class="beast-section beast-section--bg beast-fade" id="why">
+  <div class="beast-wrap">
+    {%- if section.settings.label != blank -%}<p class="beast-section-label">{{ section.settings.label | escape }}</p>{%- endif -%}
+    {%- if section.settings.title != blank -%}<h2 class="beast-section-title">{{ section.settings.title | escape }}</h2>{%- endif -%}
+    <div class="beast-why-grid beast-stagger">
+      {%- for block in section.blocks -%}
+        <div class="beast-why-card" {{ block.shopify_attributes }}>
+          <div class="beast-why-title">{{ block.settings.title | escape }}</div>
+          <div class="beast-why-desc">{{ block.settings.description | escape }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "B.E.A.S.T. Why",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Eyebrow label", "default": "Why Train With Us" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Built Different." }
+  ],
+  "blocks": [
+    {
+      "type": "reason",
+      "name": "Reason",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Reason" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Describe this reason." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "B.E.A.S.T. Why",
+      "blocks": [
+        { "type": "reason", "settings": { "title": "Technique First", "description": "Every session starts with fundamentals. We build athletes from the ground up — no shortcuts." } },
+        { "type": "reason", "settings": { "title": "All Ages Welcome", "description": "From youth athletes ages 6+ to adults chasing real results. Every skill level has a place here." } },
+        { "type": "reason", "settings": { "title": "Proven Results", "description": "500+ athletes trained across baseball, softball, football, speed & agility, and personal training." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

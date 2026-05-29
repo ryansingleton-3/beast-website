@@ -1,0 +1,93 @@
+{%- comment -%} B.E.A.S.T. — pricing {%- endcomment -%}
+<section class="beast-section beast-section--bg beast-fade" id="pricing">
+  <div class="beast-wrap">
+    {%- if section.settings.label != blank -%}<p class="beast-section-label">{{ section.settings.label | escape }}</p>{%- endif -%}
+    {%- if section.settings.title != blank -%}<h2 class="beast-section-title">{{ section.settings.title | escape }}</h2>{%- endif -%}
+    {%- if section.settings.subtitle != blank -%}<p class="beast-section-sub">{{ section.settings.subtitle | escape }}</p>{%- endif -%}
+
+    {%- assign plans = section.blocks | where: 'type', 'plan' -%}
+    {%- assign extras = section.blocks | where: 'type', 'extra' -%}
+
+    <div class="beast-pricing-grid beast-stagger">
+      {%- for block in plans -%}
+        <div class="beast-pricing-card{% if block.settings.featured %} is-featured{% endif %}" {{ block.shopify_attributes }}>
+          {%- if block.settings.featured and block.settings.badge != blank -%}<div class="beast-pricing-badge">{{ block.settings.badge | escape }}</div>{%- endif -%}
+          <div class="beast-pricing-tier">{{ block.settings.tier | escape }}</div>
+          <div class="beast-pricing-price">{{ block.settings.price | escape }}{%- if block.settings.period != blank -%}<span class="beast-pricing-period">{{ block.settings.period | escape }}</span>{%- endif -%}</div>
+          {%- if block.settings.save != blank -%}<div class="beast-pricing-save">{{ block.settings.save | escape }}</div>{%- endif -%}
+          {%- if block.settings.features != blank -%}
+            <ul class="beast-pricing-features">
+              {%- assign lines = block.settings.features | newline_to_br | split: '<br />' -%}
+              {%- for line in lines -%}{%- assign t = line | strip -%}{%- if t != blank -%}<li>{{ t | escape }}</li>{%- endif -%}{%- endfor -%}
+            </ul>
+          {%- endif -%}
+          {%- if block.settings.cta_label != blank -%}<a href="{{ block.settings.cta_link | default: '#booking' }}" class="beast-pricing-cta">{{ block.settings.cta_label | escape }}</a>{%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if extras.size > 0 -%}
+      <div class="beast-pricing-extras beast-stagger">
+        {%- for block in extras -%}
+          <div class="beast-pricing-extra" {{ block.shopify_attributes }}>
+            <div class="beast-pricing-extra-name">{{ block.settings.name | escape }}</div>
+            <div class="beast-pricing-extra-price">{{ block.settings.price | escape }}</div>
+            {%- if block.settings.note != blank -%}<div class="beast-pricing-extra-note">{{ block.settings.note | escape }}</div>{%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "B.E.A.S.T. Pricing",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Eyebrow label", "default": "Pricing" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Training Packages" },
+    { "type": "textarea", "id": "subtitle", "label": "Subtitle", "default": "1-hour sessions. Pick the package that fits your goals. Shorter-session rates and team packages below." }
+  ],
+  "blocks": [
+    {
+      "type": "plan",
+      "name": "Pricing card",
+      "settings": [
+        { "type": "text", "id": "tier", "label": "Tier name", "default": "Drop-In Session" },
+        { "type": "text", "id": "price", "label": "Price", "default": "$65" },
+        { "type": "text", "id": "period", "label": "Period", "default": "/session" },
+        { "type": "text", "id": "save", "label": "Savings line", "default": "Pay as you go" },
+        { "type": "textarea", "id": "features", "label": "Features (one per line)", "default": "1 training session\nAny program\n60 minutes" },
+        { "type": "text", "id": "cta_label", "label": "Button label", "default": "Book Single Session" },
+        { "type": "text", "id": "cta_link", "label": "Button link", "default": "#booking" },
+        { "type": "checkbox", "id": "featured", "label": "Highlight as featured", "default": false },
+        { "type": "text", "id": "badge", "label": "Featured badge text", "default": "Most Popular" }
+      ]
+    },
+    {
+      "type": "extra",
+      "name": "Extra / add-on",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name", "default": "30-min Session" },
+        { "type": "text", "id": "price", "label": "Price", "default": "$40" },
+        { "type": "text", "id": "note", "label": "Note" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "B.E.A.S.T. Pricing",
+      "blocks": [
+        { "type": "plan", "settings": { "tier": "Drop-In Session", "price": "$65", "period": "/session", "save": "Pay as you go", "features": "1 training session\nAny program\n60 minutes", "cta_label": "Book Single Session" } },
+        { "type": "plan", "settings": { "tier": "4-Session Pack", "price": "$220", "period": "/pack", "save": "$55/session · Save $40", "features": "4 training sessions\n60 minutes each\nAny program", "cta_label": "Get Started", "featured": true, "badge": "Most Popular" } },
+        { "type": "plan", "settings": { "tier": "10-Session Pack", "price": "$500", "period": "/pack", "save": "$50/session · Save $150 (Best Value)", "features": "10 training sessions\n60 minutes each\nAny program\nPriority scheduling", "cta_label": "Best Value" } },
+        { "type": "extra", "settings": { "name": "30-min Session", "price": "$40" } },
+        { "type": "extra", "settings": { "name": "45-min Session", "price": "$55" } },
+        { "type": "extra", "settings": { "name": "Goal-Setting Consultation", "price": "$50 · 45 min", "note": "No commitment required" } },
+        { "type": "extra", "settings": { "name": "Team Packages", "price": "Custom Pricing", "note": "Contact Bastian for details" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,46 @@
+{%- comment -%} B.E.A.S.T. — scrolling ticker strip {%- endcomment -%}
+{%- liquid
+  assign items = section.blocks
+-%}
+<div class="beast-ticker">
+  <div class="beast-ticker-track">
+    {%- for block in items -%}
+      <span class="beast-ticker-i" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</span>
+      <span class="beast-ticker-i" aria-hidden="true">&#9733;</span>
+    {%- endfor -%}
+    {%- comment -%} duplicate for a seamless loop {%- endcomment -%}
+    {%- for block in items -%}
+      <span class="beast-ticker-i" aria-hidden="true">{{ block.settings.text | escape }}</span>
+      <span class="beast-ticker-i" aria-hidden="true">&#9733;</span>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "B.E.A.S.T. Ticker",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Ticker item",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Baseball & Softball" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "B.E.A.S.T. Ticker",
+      "blocks": [
+        { "type": "item", "settings": { "text": "Baseball & Softball" } },
+        { "type": "item", "settings": { "text": "Personal 1-on-1 Training" } },
+        { "type": "item", "settings": { "text": "Football" } },
+        { "type": "item", "settings": { "text": "Speed & Agility" } },
+        { "type": "item", "settings": { "text": "Youth Programs" } },
+        { "type": "item", "settings": { "text": "Adult Strength & Nutrition" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

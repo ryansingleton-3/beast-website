@@ -1,0 +1,49 @@
+{%- comment -%} B.E.A.S.T. — testimonials {%- endcomment -%}
+<section class="beast-section beast-section--card beast-fade" id="testimonials">
+  <div class="beast-wrap">
+    {%- if section.settings.label != blank -%}<p class="beast-section-label">{{ section.settings.label | escape }}</p>{%- endif -%}
+    {%- if section.settings.title != blank -%}<h2 class="beast-section-title">{{ section.settings.title | escape }}</h2>{%- endif -%}
+    <div class="beast-testimonials-grid beast-stagger">
+      {%- for block in section.blocks -%}
+        <div class="beast-testimonial" {{ block.shopify_attributes }}>
+          <p class="beast-testimonial-text">{{ block.settings.text | escape }}</p>
+          {%- if block.settings.author != blank -%}<div class="beast-testimonial-author">{{ block.settings.author | escape }}</div>{%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "B.E.A.S.T. Testimonials",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Eyebrow label", "default": "Testimonials" },
+    { "type": "text", "id": "title", "label": "Title", "default": "What Parents & Athletes Say" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "textarea", "id": "text", "label": "Quote" },
+        { "type": "text", "id": "author", "label": "Attribution" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "B.E.A.S.T. Testimonials",
+      "blocks": [
+        { "type": "review", "settings": { "text": "My son started throwing in the high 40s MPH, and after just 3-4 sessions, he was consistently throwing in the 60s. That kind of jump, just from refining technique, speaks volumes about Bastian's eye and knowledge.", "author": "— Wiff J., Parent of a 14-Year-Old Player" } },
+        { "type": "review", "settings": { "text": "He went from being afraid of a baseball to catching them in just a few months. His hitting has improved 100% since we started lessons. Coach B knows how to push him to do his best while keeping the practices fun and supportive.", "author": "— Kristi, Grandmother of Athlete" } },
+        { "type": "review", "settings": { "text": "It's truly something special to see him work effectively with my 15-year-old, my 10-year-old, and even my little 6-year-old who's just starting out. He genuinely understands how to bring out the best in each of them.", "author": "— Heather S., Parent of Three" } },
+        { "type": "review", "settings": { "text": "Bastian has been working with my son since he was 7 years old, and the impact has been incredible. A great coach for young kids needs two things: real knowledge of the game and the ability to teach it in a fun, engaging way. Bastian excels at both.", "author": "— Phillip R., Baseball Parent (7+ Years)" } },
+        { "type": "review", "settings": { "text": "Through a combination of technical knowledge, motivational support, and genuine care, Coach Bastian helped both athletes achieve significant improvements in strength, agility, and overall performance in their respective sports programs. Their progress was not limited to physical gains; Coach Bastian also fostered confidence, discipline, and a strong work ethic in both athletes.", "author": "— Jason P., Parent of Two Athletes" } },
+        { "type": "review", "settings": { "text": "BEAST is the best spot for all around training! Bastian does a great job at adapting to different clients, he programmed excellent and thorough workouts for me and also able to adapt for training younger kids. Kept my boys engaged and challenged the whole time.", "author": "— Ryan F., Adult Client & Parent" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

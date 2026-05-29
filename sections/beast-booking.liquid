@@ -1,0 +1,20 @@
+{%- comment -%} B.E.A.S.T. — booking CTA band {%- endcomment -%}
+<div class="beast-book-band beast-fade" id="booking">
+  {%- if section.settings.text != blank -%}<div class="beast-book-text">{{ section.settings.text | escape }}</div>{%- endif -%}
+  {%- if section.settings.button_label != blank -%}
+    <a href="{{ section.settings.button_link | default: '#schedule' }}" class="beast-book-btn">{{ section.settings.button_label | escape }}</a>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "B.E.A.S.T. Booking Band",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "text", "label": "Heading", "default": "Ready to unlock your potential?" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Schedule Your First Session →" },
+    { "type": "text", "id": "button_link", "label": "Button link", "default": "#schedule" }
+  ],
+  "presets": [{ "name": "B.E.A.S.T. Booking Band" }]
+}
+{% endschema %}

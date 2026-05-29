@@ -1,0 +1,33 @@
+{%- comment -%} B.E.A.S.T. — live booking calendar {%- endcomment -%}
+<section class="beast-section beast-section--card beast-fade" id="schedule">
+  <div class="beast-wrap">
+    {%- if section.settings.label != blank -%}<p class="beast-section-label">{{ section.settings.label | escape }}</p>{%- endif -%}
+    {%- if section.settings.title != blank -%}<h2 class="beast-section-title">{{ section.settings.title | escape }}</h2>{%- endif -%}
+    {%- if section.settings.subtitle != blank -%}<p class="beast-section-sub">{{ section.settings.subtitle | escape }}</p>{%- endif -%}
+    {%- if section.settings.embed_url != blank -%}
+      <iframe src="{{ section.settings.embed_url }}" title="Booking calendar" loading="lazy" style="width:100%;min-height:{{ section.settings.embed_height }}px;border:1px solid #dde3ea;border-left:3px solid #8AB9E3;"></iframe>
+    {%- else -%}
+      <div class="beast-schedule-ph">
+        <span>{{ section.settings.placeholder | default: '[ Booking Calendar Will Embed Here ]' }}</span>
+        <small>{{ section.settings.placeholder_note | default: 'Cal.com / Acuity Scheduling' }}</small>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "B.E.A.S.T. Schedule",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Eyebrow label", "default": "Pick a Time" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Live Availability" },
+    { "type": "textarea", "id": "subtitle", "label": "Subtitle", "default": "See open training slots in real time. Click to book directly from the calendar below." },
+    { "type": "url", "id": "embed_url", "label": "Booking embed URL (Cal.com / Acuity)" },
+    { "type": "range", "id": "embed_height", "label": "Embed height", "min": 400, "max": 1200, "step": 20, "unit": "px", "default": 700 },
+    { "type": "text", "id": "placeholder", "label": "Placeholder text (shown until embed is set)", "default": "[ Booking Calendar Will Embed Here ]" },
+    { "type": "text", "id": "placeholder_note", "label": "Placeholder note", "default": "Cal.com / Acuity Scheduling" }
+  ],
+  "presets": [{ "name": "B.E.A.S.T. Schedule" }]
+}
+{% endschema %}

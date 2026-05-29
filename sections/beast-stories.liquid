@@ -1,0 +1,48 @@
+{%- comment -%} B.E.A.S.T. — success stories {%- endcomment -%}
+<section class="beast-section beast-section--bg beast-fade" id="stories">
+  <div class="beast-wrap">
+    {%- if section.settings.label != blank -%}<p class="beast-section-label">{{ section.settings.label | escape }}</p>{%- endif -%}
+    {%- if section.settings.title != blank -%}<h2 class="beast-section-title">{{ section.settings.title | escape }}</h2>{%- endif -%}
+    <div class="beast-stories-grid beast-stagger">
+      {%- for block in section.blocks -%}
+        <div class="beast-story-card" {{ block.shopify_attributes }}>
+          <div class="beast-story-name">{{ block.settings.name | escape }}</div>
+          {%- if block.settings.tag != blank -%}<div class="beast-story-tag">{{ block.settings.tag | escape }}</div>{%- endif -%}
+          <div class="beast-story-body rte">{{ block.settings.body }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "B.E.A.S.T. Stories",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Eyebrow label", "default": "Success Stories" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Real Athletes. Real Results." }
+  ],
+  "blocks": [
+    {
+      "type": "story",
+      "name": "Story",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name", "default": "Athlete" },
+        { "type": "text", "id": "tag", "label": "Tag", "default": "Youth Baseball" },
+        { "type": "richtext", "id": "body", "label": "Story", "default": "<p>Share this athlete's progress.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "B.E.A.S.T. Stories",
+      "blocks": [
+        { "type": "story", "settings": { "name": "Jake M.", "tag": "Youth Baseball", "body": "<p>Started training before his 12U season — went from JV bench to leading his team in batting average. Mechanics work and weekly hitting sessions transformed his approach at the plate.</p>" } },
+        { "type": "story", "settings": { "name": "Sarah L.", "tag": "High School Softball", "body": "<p>Came in with confidence issues and an inconsistent swing. Three months of mechanics-focused training built her into a varsity starter and team captain.</p>" } },
+        { "type": "story", "settings": { "name": "Mike R.", "tag": "Adult Personal Training", "body": "<p>Lost 25 pounds and added serious strength over 6 months of 1-on-1 sessions. First time he's seeing real results after years of inconsistent gym workouts.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

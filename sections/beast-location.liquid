@@ -1,0 +1,54 @@
+{%- comment -%} B.E.A.S.T. — location + map {%- endcomment -%}
+<section class="beast-section beast-section--bg beast-fade" id="location">
+  <div class="beast-wrap">
+    {%- if section.settings.label != blank -%}<p class="beast-section-label">{{ section.settings.label | escape }}</p>{%- endif -%}
+    {%- if section.settings.title != blank -%}<h2 class="beast-section-title">{{ section.settings.title | escape }}</h2>{%- endif -%}
+    <div class="beast-location-grid">
+      <div class="beast-location-info">
+        {%- for block in section.blocks -%}
+          <div class="beast-location-block" {{ block.shopify_attributes }}>
+            <div class="beast-location-block-title">{{ block.settings.title | escape }}</div>
+            <div class="beast-location-text rte">{{ block.settings.content }}</div>
+          </div>
+        {%- endfor -%}
+      </div>
+      <div class="beast-location-map">
+        {%- if section.settings.map_src != blank -%}
+          <iframe src="{{ section.settings.map_src }}" title="{{ section.settings.title | escape }}" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "B.E.A.S.T. Location",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Eyebrow label", "default": "Location" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Where We Train" },
+    { "type": "textarea", "id": "map_src", "label": "Google Maps embed URL (Share → Embed a map → copy the src)", "default": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3206.2573112360897!2d-87.38180872368031!3d36.523786183231394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8864d9d8f7647d4b%3A0x504016d0c3d9a99b!2s1558%20Bridgewood%20Rd%2C%20Clarksville%2C%20TN%2037040!5e0!3m2!1sen!2sus!4v1776190381780!5m2!1sen!2sus" }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "name": "Info block",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Title" },
+        { "type": "richtext", "id": "content", "label": "Content", "default": "<p>Details</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "B.E.A.S.T. Location",
+      "blocks": [
+        { "type": "info", "settings": { "title": "B.E.A.S.T. Training Facility", "content": "<p>1558 Bridgewood Rd<br>Clarksville, TN 37040</p>" } },
+        { "type": "info", "settings": { "title": "Hours", "content": "<p>Monday – Friday: 10:00 AM – 9:00 PM<br>Saturday: 7:00 AM – 3:00 PM<br>Sunday: Closed</p>" } },
+        { "type": "info", "settings": { "title": "Service Area", "content": "<p>Serving athletes throughout the region — including youth and high school programs in surrounding towns.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

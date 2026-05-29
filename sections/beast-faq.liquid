@@ -1,0 +1,52 @@
+{%- comment -%} B.E.A.S.T. — FAQ {%- endcomment -%}
+<section class="beast-section beast-section--card beast-fade" id="faq">
+  <div class="beast-wrap">
+    {%- if section.settings.label != blank -%}<p class="beast-section-label">{{ section.settings.label | escape }}</p>{%- endif -%}
+    {%- if section.settings.title != blank -%}<h2 class="beast-section-title">{{ section.settings.title | escape }}</h2>{%- endif -%}
+    <div class="beast-faq-list">
+      {%- for block in section.blocks -%}
+        <div class="beast-faq-item" {{ block.shopify_attributes }}>
+          <div class="beast-faq-q">{{ block.settings.question | escape }}</div>
+          <div class="beast-faq-a rte">{{ block.settings.answer }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "B.E.A.S.T. FAQ",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Eyebrow label", "default": "FAQ" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Frequently Asked Questions" }
+  ],
+  "blocks": [
+    {
+      "type": "qa",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Your question?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Your answer.</p>" }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "B.E.A.S.T. FAQ",
+      "blocks": [
+        { "type": "qa", "settings": { "question": "What ages do you train?", "answer": "<p>We work with athletes from ages 6 through adulthood. Youth, middle school, high school, and adult personal training are all available.</p>" } },
+        { "type": "qa", "settings": { "question": "Where are sessions held?", "answer": "<p>Sessions take place at our training facility. See the Location section below for the full address and directions.</p>" } },
+        { "type": "qa", "settings": { "question": "How long is each session?", "answer": "<p>Sessions are available in 30-minute ($40), 45-minute ($55), and 60-minute ($65) formats depending on the program and athlete.</p>" } },
+        { "type": "qa", "settings": { "question": "How is availability determined?", "answer": "<p>A combination of online scheduling and in-person scheduling. Training schedules are formed weekly — contact Bastian to confirm open slots for the coming week.</p>" } },
+        { "type": "qa", "settings": { "question": "Do you offer group or team training?", "answer": "<p>Yes — team packages are available with custom pricing. Contact Bastian directly to discuss your team's needs.</p>" } },
+        { "type": "qa", "settings": { "question": "What should my child bring?", "answer": "<p>Athletic clothing, sneakers (or cleats for field work), a water bottle, and any sport-specific gear (glove, bat, etc.). If equipment is forgotten, Bastian has gear on hand to use for the session.</p>" } },
+        { "type": "qa", "settings": { "question": "What's your cancellation policy?", "answer": "<p>We ask for at least 24 hours notice for cancellations. Sessions cancelled with less notice may be charged.</p>" } },
+        { "type": "qa", "settings": { "question": "Is the first session free?", "answer": "<p>No — the first session is not free. If you want to meet Bastian and set goals before committing to training, book a 45-minute goal-setting consultation for $50. There's no commitment required after the consultation.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

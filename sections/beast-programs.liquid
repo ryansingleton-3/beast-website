@@ -1,0 +1,47 @@
+{%- comment -%} B.E.A.S.T. — programs / services {%- endcomment -%}
+<section class="beast-section beast-section--bg beast-fade" id="programs">
+  <div class="beast-wrap">
+    {%- if section.settings.label != blank -%}<p class="beast-section-label">{{ section.settings.label | escape }}</p>{%- endif -%}
+    {%- if section.settings.title != blank -%}<h2 class="beast-section-title">{{ section.settings.title | escape }}</h2>{%- endif -%}
+    <div class="beast-programs-grid beast-stagger">
+      {%- for block in section.blocks -%}
+        <div class="beast-program-card" {{ block.shopify_attributes }}>
+          <div class="beast-program-name">{{ block.settings.name | escape }}</div>
+          <div class="beast-program-desc">{{ block.settings.description | escape }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "B.E.A.S.T. Programs",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Eyebrow label", "default": "What We Offer" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Programs" }
+  ],
+  "blocks": [
+    {
+      "type": "program",
+      "name": "Program",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name", "default": "Program" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Describe this program." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "B.E.A.S.T. Programs",
+      "blocks": [
+        { "type": "program", "settings": { "name": "Baseball & Softball", "description": "Youth skills development — hitting, fielding, throwing mechanics, position-specific training, plus mental focus and toughness training." } },
+        { "type": "program", "settings": { "name": "Personal 1-on-1 Training", "description": "Individual coaching for adults and kids — strength, conditioning, programming, and nutrition guidance for adult clients looking to build real results." } },
+        { "type": "program", "settings": { "name": "Football", "description": "Speed, agility, and sport-specific strength for skill positions at every level." } },
+        { "type": "program", "settings": { "name": "Speed & Agility", "description": "Explosive quickness, lateral movement, and conditioning for athletes of all ages." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

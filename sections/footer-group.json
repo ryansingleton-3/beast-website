@@ -1,35 +1,25 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
-    "footer": {
-      "type": "footer",
+    "beast_footer": {
+      "type": "beast-footer",
+      "blocks": {
+        "fl1": { "type": "link", "settings": { "label": "About", "link": "#about" } },
+        "fl2": { "type": "link", "settings": { "label": "Training", "link": "#programs" } },
+        "fl3": { "type": "link", "settings": { "label": "Why B.E.A.S.T.", "link": "#why" } },
+        "fl4": { "type": "link", "settings": { "label": "Pricing", "link": "#pricing" } },
+        "so1": { "type": "social", "settings": { "label": "Instagram", "link": "" } },
+        "so2": { "type": "social", "settings": { "label": "Facebook", "link": "" } },
+        "so3": { "type": "social", "settings": { "label": "Twitter", "link": "" } }
+      },
+      "block_order": ["fl1", "fl2", "fl3", "fl4", "so1", "so2", "so3"],
       "settings": {
-        "color_scheme": "scheme-1",
-        "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
-        "enable_follow_on_shop": true,
-        "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "payment_enable": true,
-        "show_policy": true,
-        "margin_top": 0,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "tagline": "Borowik's Elite Athletic & Strength Training",
+        "email": "borowikseliteathletics@gmail.com",
+        "copyright": "© 2026 B.E.A.S.T. All rights reserved."
       }
     }
   },
-  "order": [
-    "footer"
-  ]
+  "order": ["beast_footer"]
 }

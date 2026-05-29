@@ -1,0 +1,60 @@
+{%- comment -%} B.E.A.S.T. — merchandise {%- endcomment -%}
+<section class="beast-section beast-section--bg beast-merch beast-fade" id="merch">
+  <div class="beast-wrap">
+    {%- if section.settings.label != blank -%}<p class="beast-section-label">{{ section.settings.label | escape }}</p>{%- endif -%}
+    {%- if section.settings.title != blank -%}<h2 class="beast-section-title">{{ section.settings.title | escape }}</h2>{%- endif -%}
+    {%- if section.settings.subtitle != blank -%}<p class="beast-merch-sub">{{ section.settings.subtitle | escape }}</p>{%- endif -%}
+    <div class="beast-merch-grid beast-stagger">
+      {%- for block in section.blocks -%}
+        <div class="beast-merch-card" {{ block.shopify_attributes }}>
+          <div class="beast-merch-ph">
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 500 | image_tag: loading: 'lazy', alt: block.settings.name }}
+            {%- else -%}
+              <span aria-hidden="true">{{ block.settings.emoji | default: '👕' }}</span>
+            {%- endif -%}
+          </div>
+          <div class="beast-merch-name">{{ block.settings.name | escape }}</div>
+          {%- if block.settings.note != blank -%}<div class="beast-merch-note">{{ block.settings.note | escape }}</div>{%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.footnote != blank -%}<div class="beast-merch-foot rte">{{ section.settings.footnote }}</div>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "B.E.A.S.T. Merch",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Eyebrow label", "default": "Merchandise" },
+    { "type": "text", "id": "title", "label": "Title", "default": "B.E.A.S.T. Gear" },
+    { "type": "textarea", "id": "subtitle", "label": "Subtitle", "default": "Browse our gear lineup below. To purchase any item, contact Bastian directly — these are not available for online order." },
+    { "type": "richtext", "id": "footnote", "label": "Footnote", "default": "<p>Product photos coming soon. Email borowikseliteathletics@gmail.com to reserve yours.</p>" }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Gear item",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Photo (optional)" },
+        { "type": "text", "id": "emoji", "label": "Emoji (if no photo)", "default": "👕" },
+        { "type": "text", "id": "name", "label": "Name", "default": "B.E.A.S.T. T-Shirt" },
+        { "type": "text", "id": "note", "label": "Note", "default": "Contact Bastian to purchase" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "B.E.A.S.T. Merch",
+      "blocks": [
+        { "type": "item", "settings": { "emoji": "👕", "name": "B.E.A.S.T. T-Shirt", "note": "Contact Bastian to purchase" } },
+        { "type": "item", "settings": { "emoji": "🧥", "name": "Training Hoodie", "note": "Contact Bastian to purchase" } },
+        { "type": "item", "settings": { "emoji": "🧢", "name": "Logo Cap", "note": "Contact Bastian to purchase" } },
+        { "type": "item", "settings": { "emoji": "🎒", "name": "Training Bag", "note": "Contact Bastian to purchase" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
