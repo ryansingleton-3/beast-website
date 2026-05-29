@@ -3,11 +3,14 @@
   <div class="beast-wrap">
     {%- if section.settings.label != blank -%}<p class="beast-section-label">{{ section.settings.label | escape }}</p>{%- endif -%}
     {%- if section.settings.title != blank -%}<h2 class="beast-section-title">{{ section.settings.title | escape }}</h2>{%- endif -%}
+    {%- assign gallery_defaults = "beast-gallery-1.jpg,beast-gallery-2.jpg,beast-gallery-3.jpg,beast-gallery-4.jpg,beast-gallery-5.jpg,beast-gallery-6.jpg" | split: "," -%}
     <div class="beast-gallery-grid beast-stagger">
       {%- for block in section.blocks -%}
         <div class="beast-gallery-item" {{ block.shopify_attributes }}>
           {%- if block.settings.image != blank -%}
             {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '400, 600, 800', alt: block.settings.alt }}
+          {%- elsif forloop.index0 < gallery_defaults.size -%}
+            <img src="{{ gallery_defaults[forloop.index0] | asset_url }}" alt="{{ block.settings.alt | escape }}" width="1200" height="900" loading="lazy">
           {%- else -%}
             <span class="beast-gallery-ph">Add Photo</span>
           {%- endif -%}

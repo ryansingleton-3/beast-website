@@ -22,7 +22,7 @@
             | image_tag: loading: 'lazy', widths: '450, 660, 900, 1200', alt: section.settings.athlete_name
           }}
         {%- else -%}
-          <div class="beast-spotlight-ph"><span>Athlete Photo</span></div>
+          <img src="{{ 'beast-athlete.jpg' | asset_url }}" alt="{{ section.settings.athlete_name | escape }}" width="1600" height="1066" loading="lazy">
         {%- endif -%}
         {%- if section.settings.month != blank -%}
           <div class="beast-spotlight-month">{{ section.settings.month | escape }}</div>
