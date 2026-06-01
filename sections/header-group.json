@@ -11,7 +11,7 @@
         "n4": { "type": "link", "settings": { "label": "Pricing", "link": "#pricing" } }
       },
       "block_order": ["n1", "n2", "n3", "n4"],
-      "settings": { "cta_label": "Book a Session", "cta_link": "#booking" }
+      "settings": { "cta_label": "Book a Session", "cta_link": "#pricing" }
     }
   },
   "order": ["beast_header"]

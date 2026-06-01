@@ -102,7 +102,7 @@
         "ex1": { "type": "extra", "settings": { "name": "30-min Session", "price": "$40" } },
         "ex2": { "type": "extra", "settings": { "name": "45-min Session", "price": "$55" } },
         "ex3": { "type": "extra", "settings": { "name": "Goal-Setting Consultation", "price": "$50 · 45 min", "note": "No commitment required" } },
-        "ex4": { "type": "extra", "settings": { "name": "Team Packages", "price": "Custom Pricing", "note": "Contact Bastian for details" } }
+        "ex4": { "type": "extra", "settings": { "name": "Team Packages", "price": "Custom Pricing", "note": "Contact Bastian for details", "link": "#contact" } }
       },
       "block_order": ["pl1", "pl2", "pl3", "ex1", "ex2", "ex3", "ex4"],
       "settings": {}
@@ -143,7 +143,6 @@
       "block_order": ["l1", "l2", "l3"],
       "settings": {}
     },
-    "schedule": { "type": "beast-schedule", "settings": {} },
     "booking": { "type": "beast-booking", "settings": {} },
     "contact": {
       "type": "beast-contact",
@@ -174,7 +173,6 @@
     "merch",
     "faq",
     "location",
-    "schedule",
     "booking",
     "contact"
   ]

@@ -21,7 +21,16 @@
               {%- for line in lines -%}{%- assign t = line | strip -%}{%- if t != blank -%}<li>{{ t | escape }}</li>{%- endif -%}{%- endfor -%}
             </ul>
           {%- endif -%}
-          {%- if block.settings.cta_label != blank -%}<a href="{{ block.settings.cta_link | default: '#booking' }}" class="beast-pricing-cta">{{ block.settings.cta_label | escape }}</a>{%- endif -%}
+          {%- liquid
+            assign plan_url = block.settings.cta_link
+            if block.settings.product != blank
+              assign plan_url = block.settings.product.url
+            endif
+            if plan_url == blank
+              assign plan_url = '#pricing'
+            endif
+          -%}
+          {%- if block.settings.cta_label != blank -%}<a href="{{ plan_url }}" class="beast-pricing-cta">{{ block.settings.cta_label | escape }}</a>{%- endif -%}
         </div>
       {%- endfor -%}
     </div>
@@ -29,11 +38,22 @@
     {%- if extras.size > 0 -%}
       <div class="beast-pricing-extras beast-stagger">
         {%- for block in extras -%}
-          <div class="beast-pricing-extra" {{ block.shopify_attributes }}>
+          {%- liquid
+            assign extra_url = block.settings.link
+            if block.settings.product != blank
+              assign extra_url = block.settings.product.url
+            endif
+          -%}
+          {%- capture extra_inner -%}
             <div class="beast-pricing-extra-name">{{ block.settings.name | escape }}</div>
             <div class="beast-pricing-extra-price">{{ block.settings.price | escape }}</div>
             {%- if block.settings.note != blank -%}<div class="beast-pricing-extra-note">{{ block.settings.note | escape }}</div>{%- endif -%}
-          </div>
+          {%- endcapture -%}
+          {%- if extra_url != blank -%}
+            <a class="beast-pricing-extra" href="{{ extra_url }}" {{ block.shopify_attributes }}>{{ extra_inner }}</a>
+          {%- else -%}
+            <div class="beast-pricing-extra" {{ block.shopify_attributes }}>{{ extra_inner }}</div>
+          {%- endif -%}
         {%- endfor -%}
       </div>
     {%- endif -%}
@@ -62,7 +82,8 @@
         { "type": "text", "id": "cta_label", "label": "Button label", "default": "Book Single Session" },
         { "type": "text", "id": "cta_link", "label": "Button link", "default": "#booking" },
         { "type": "checkbox", "id": "featured", "label": "Highlight as featured", "default": false },
-        { "type": "text", "id": "badge", "label": "Featured badge text", "default": "Most Popular" }
+        { "type": "text", "id": "badge", "label": "Featured badge text", "default": "Most Popular" },
+        { "type": "product", "id": "product", "label": "Link to product (booking page)", "info": "Pick the Shopify product for this package — the button links to its product page (where Apntly's booking widget lives). Overrides the button link below." }
       ]
     },
     {
@@ -71,7 +92,9 @@
       "settings": [
         { "type": "text", "id": "name", "label": "Name", "default": "30-min Session" },
         { "type": "text", "id": "price", "label": "Price", "default": "$40" },
-        { "type": "text", "id": "note", "label": "Note" }
+        { "type": "text", "id": "note", "label": "Note" },
+        { "type": "product", "id": "product", "label": "Link to product (booking page)" },
+        { "type": "text", "id": "link", "label": "Or link (e.g. #contact)" }
       ]
     }
   ],
