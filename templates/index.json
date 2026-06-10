@@ -88,9 +88,10 @@
         "r3": { "type": "review", "settings": { "text": "It's truly something special to see him work effectively with my 15-year-old, my 10-year-old, and even my little 6-year-old who's just starting out. He genuinely understands how to bring out the best in each of them.", "author": "— Heather S., Parent of Three" } },
         "r4": { "type": "review", "settings": { "text": "Bastian has been working with my son since he was 7 years old, and the impact has been incredible. A great coach for young kids needs two things: real knowledge of the game and the ability to teach it in a fun, engaging way. Bastian excels at both.", "author": "— Phillip R., Baseball Parent (7+ Years)" } },
         "r5": { "type": "review", "settings": { "text": "Through a combination of technical knowledge, motivational support, and genuine care, Coach Bastian helped both athletes achieve significant improvements in strength, agility, and overall performance in their respective sports programs. Their progress was not limited to physical gains; Coach Bastian also fostered confidence, discipline, and a strong work ethic in both athletes.", "author": "— Jason P., Parent of Two Athletes" } },
-        "r6": { "type": "review", "settings": { "text": "BEAST is the best spot for all around training! Bastian does a great job at adapting to different clients, he programmed excellent and thorough workouts for me and also able to adapt for training younger kids. Kept my boys engaged and challenged the whole time.", "author": "— Ryan F., Adult Client & Parent" } }
+        "r6": { "type": "review", "settings": { "text": "BEAST is the best spot for all around training! Bastian does a great job at adapting to different clients, he programmed excellent and thorough workouts for me and also able to adapt for training younger kids. Kept my boys engaged and challenged the whole time.", "author": "— Ryan F., Adult Client & Parent" } },
+        "r7": { "type": "review", "settings": { "text": "This is the boys' second season working with him, and we couldn't be more thankful. He is so patient, attentive, and encouraging with the boys. He always takes the time to help correct any flaws he sees and explains things in a way they truly understand. The boys look forward to seeing him every week.", "author": "— Gabrielle J., Parent of Two Baseball Players" } }
       },
-      "block_order": ["r1", "r2", "r3", "r4", "r5", "r6"],
+      "block_order": ["r1", "r2", "r3", "r4", "r5", "r6", "r7"],
       "settings": {}
     },
     "pricing": {
