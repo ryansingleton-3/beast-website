@@ -17,6 +17,26 @@
   {%- if section.settings.cta_label != blank -%}
     <a href="{{ section.settings.cta_link | default: '#booking' }}" class="beast-nav-cta">{{ section.settings.cta_label | escape }}</a>
   {%- endif -%}
+
+  {%- if section.settings.show_cart -%}
+    {%- comment -%} Inner markup mirrors sections/cart-icon-bubble.liquid so Dawn's AJAX section swap stays compatible {%- endcomment -%}
+    <a href="{{ routes.cart_url }}" class="beast-nav-cart" id="cart-icon-bubble" aria-label="{{ 'templates.cart.cart' | t }}">
+      {%- if cart == empty -%}
+        <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
+      {%- else -%}
+        <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
+      {%- endif -%}
+      <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+      {%- if cart != empty -%}
+        <div class="cart-count-bubble">
+          {%- if cart.item_count < 100 -%}
+            <span aria-hidden="true">{{ cart.item_count }}</span>
+          {%- endif -%}
+          <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+        </div>
+      {%- endif -%}
+    </a>
+  {%- endif -%}
 </header>
 
 {% schema %}
@@ -26,7 +46,8 @@
     { "type": "image_picker", "id": "logo", "label": "Logo (defaults to B.E.A.S.T. logo)" },
     { "type": "url", "id": "logo_link", "label": "Logo link" },
     { "type": "text", "id": "cta_label", "label": "Button label", "default": "Book a Session" },
-    { "type": "text", "id": "cta_link", "label": "Button link (e.g. #booking)", "default": "#booking" }
+    { "type": "text", "id": "cta_link", "label": "Button link (e.g. #booking)", "default": "#booking" },
+    { "type": "checkbox", "id": "show_cart", "label": "Show cart icon", "default": true, "info": "Shows a count bubble when the cart has items." }
   ],
   "blocks": [
     {

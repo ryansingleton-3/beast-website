@@ -81,6 +81,21 @@ html { font-size: 100%; }
   text-transform: uppercase; border: none; cursor: pointer; text-decoration: none; transition: background .25s ease;
 }
 .beast-nav-cta:hover { background: var(--beast-accent-dark); }
+.beast-nav-cart {
+  position: relative; display: inline-flex; align-items: center; justify-content: center;
+  width: 42px; height: 42px; margin-left: -0.25rem; color: var(--beast-text);
+  text-decoration: none; transition: color .25s ease;
+}
+.beast-nav-cart:hover { color: var(--beast-accent-dark); }
+.beast-nav-cart .svg-wrapper { display: inline-flex; }
+.beast-nav-cart svg { width: 22px; height: 22px; }
+.beast-nav-cart .cart-count-bubble {
+  position: absolute; top: 2px; right: 0;
+  min-width: 17px; height: 17px; padding: 0 4px; border-radius: 999px;
+  background: var(--beast-accent); color: #0a0a0a;
+  font-family: var(--beast-font-label); font-weight: 700; font-size: 0.7rem; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+}
 
 /* ===== Hero ===== */
 .beast-hero { display: grid; grid-template-columns: 1fr 480px; min-height: 700px; background: var(--beast-card); position: relative; }
