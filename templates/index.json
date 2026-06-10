@@ -96,12 +96,12 @@
     "pricing": {
       "type": "beast-pricing",
       "blocks": {
-        "pl1": { "type": "plan", "settings": { "tier": "Drop-In Session", "price": "$65", "period": "/session", "save": "Pay as you go", "features": "1 training session\nAny program\n60 minutes", "cta_label": "Book Single Session" } },
-        "pl2": { "type": "plan", "settings": { "tier": "4-Session Pack", "price": "$220", "period": "/pack", "save": "$55/session · Save $40", "features": "4 training sessions\n60 minutes each\nAny program", "cta_label": "Get Started", "featured": true, "badge": "Most Popular" } },
-        "pl3": { "type": "plan", "settings": { "tier": "10-Session Pack", "price": "$500", "period": "/pack", "save": "$50/session · Save $150 (Best Value)", "features": "10 training sessions\n60 minutes each\nAny program\nPriority scheduling", "cta_label": "Best Value" } },
-        "ex1": { "type": "extra", "settings": { "name": "30-min Session", "price": "$40" } },
-        "ex2": { "type": "extra", "settings": { "name": "45-min Session", "price": "$55" } },
-        "ex3": { "type": "extra", "settings": { "name": "Goal-Setting Consultation", "price": "$50 · 45 min", "note": "No commitment required" } },
+        "pl1": { "type": "plan", "settings": { "tier": "Drop-In Session", "price": "$65", "period": "/session", "save": "Pay as you go", "features": "1 training session\nAny program\n60 minutes", "cta_label": "Book Single Session", "product_handle": "60-minute-training-session" } },
+        "pl2": { "type": "plan", "settings": { "tier": "4-Session Pack", "price": "$220", "period": "/pack", "save": "$55/session · Save $40", "features": "4 training sessions\n60 minutes each\nAny program", "cta_label": "Get Started", "featured": true, "badge": "Most Popular", "product_handle": "4-session-pack" } },
+        "pl3": { "type": "plan", "settings": { "tier": "10-Session Pack", "price": "$500", "period": "/pack", "save": "$50/session · Save $150 (Best Value)", "features": "10 training sessions\n60 minutes each\nAny program\nPriority scheduling", "cta_label": "Best Value", "product_handle": "10-session-pack" } },
+        "ex1": { "type": "extra", "settings": { "name": "30-min Session", "price": "$40", "product_handle": "30-minute-training-session" } },
+        "ex2": { "type": "extra", "settings": { "name": "45-min Session", "price": "$55", "product_handle": "45-minute-training-session" } },
+        "ex3": { "type": "extra", "settings": { "name": "Goal-Setting Consultation", "price": "$50 · 45 min", "note": "No commitment required", "product_handle": "goal-setting-consultation" } },
         "ex4": { "type": "extra", "settings": { "name": "Team Packages", "price": "Custom Pricing", "note": "Contact Bastian for details", "link": "#contact" } }
       },
       "block_order": ["pl1", "pl2", "pl3", "ex1", "ex2", "ex3", "ex4"],
