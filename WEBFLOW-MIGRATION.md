@@ -43,12 +43,21 @@ Live Shopify store: `mt1rnf-e1.myshopify.com` (password-protected, never launche
 - Bastian's email for notifications: borowikseliteathletics@gmail.com. Google Calendar sync was wanted but never connected.
 - Webflow has no native scheduling → embed Calendly / Cal.com / Acuity. Paid tiers of those take Stripe payment at booking. **Ryan has not chosen one yet, and Claude cannot create accounts** — build the booking section with a clearly marked embed placeholder and ask Ryan which tool; he creates the account and hands over the embed link.
 
+## BUILT AND PUBLISHED 2026-09-02 → https://b-e-a-s-t.webflow.io
+- Built headlessly through Webflow's remote MCP server with a **direct OAuth client** (`~/.beast/webflow/mcp_oauth.py` + `mcp_client.py`, token in `~/.beast/webflow/token.json`, refreshable) — no Claude Code session restart needed. `_webflow-build/build.py` runs the whtml inserts; `build-log.json` has every section's element id.
+- What the free Starter plan blocked, and the workarounds used: site/page **custom code endpoints 404** → base body styles + ticker keyframes live in an **HTML Embed** element at the top of the body; Google Fonts couldn't be installed → the three families were uploaded as **custom fonts** (OFL files from google/fonts) via `data_fonts_tool`; whtml rejects `::before`/`::placeholder` → real `<span>` checkmarks, placeholder color in the embed.
+- Contact form = native Webflow form "B.E.A.S.T. Contact" with the theme's success/error copy. Images are bound to the asset library. Page title/SEO/OG set.
+- Known nit: the `#location` section's anchor id would not save (multiplayer-server conflict); nothing links to it.
+- Still held: custom domain, Shopify cancellation, Apntly cancellation, booking-tool choice (embed placeholder is live at `#schedule`), Bastian's gym photos (not on this Mac).
+
 ## Status 2026-09-02 (evening) — what is done, what the build session needs
 - **The local `webflow-beast` server cannot build.** npm `webflow-mcp-server` 1.0.0 is the only version; its element/style/asset tools need a Designer "Bridge App" that would have to be built and published as a Designer Extension. The Data API alone cannot create elements.
 - **Use the official remote server instead.** Registered as `webflow-beast-v2` (`https://mcp.webflow.com/mcp`, user scope). It has headless `data_element_builder`, `data_whtml_builder`, `data_style_tool`, `data_variable_tool`, `data_assets_tool`, `data_scripts_tool` — no Designer needed. It takes OAuth only (site token rejected). **Ryan must authorize it once** from an interactive `claude` terminal with `/mcp` → webflow-beast-v2 → pick ONLY the B.E.A.S.T. workspace, then start a new session. The claude.ai "Webflow" connector (`mcp__6ee4d03c…`) was checked read-only: it reaches only the MTi site.
 - **Assets are uploaded** (all 9, via REST with the site token): ids + CDN URLs in `_webflow-build/assets.json`.
 - **Build spec is ready:** `_webflow-build/BUILD-PLAN.md` + one `NN-section.html/.css` pair per section (whtml-builder format: single root, Webflow breakpoints only, no keyframes), `site-head.html` for fonts + ticker keyframes, `preview.html` = the whole thing assembled for a local look (`.claude/launch.json` → `webflow-build-preview`).
 - **Decisions confirmed by Ryan ("go", 2026-09-02):** light theme; copy verbatim from the live theme (7 testimonials); schedule/embed placeholder section added before the CTA band; pricing CTAs → `#schedule`; merch static; PDF links stay `#`. Booking tool still unchosen (Calendly / Cal.com / Acuity — Acuity is the only one that sells the packs).
+- **Publishing to the Webflow subdomain is approved** (Ryan, 2026-09-02: "push it to Webflow, leave it on that webflow domain"). Custom domain, Shopify and Apntly cancellation remain held.
+- **Bastian's gym photos are not on this Mac** (searched repo, Downloads, Desktop, Photos, Drive, Gmail, Apple Mail; Messages DB is empty here). Only his logo colorways + 5 apparel photos (`_design-reference/Logos/`) and the couple photo used as the coach shot exist. Ryan to save texted photos into `_design-reference/Images/from-bastian/`.
 - **B.E.A.S.T. Shopify Admin token now exists** at `~/.beast/shopify/beast.token` (see `~/.beast/shopify/SETUP.md`) for later export/shutdown work. Still never use the Shopify MCP `switch-shop`.
 
 ## Guardrails for the build session

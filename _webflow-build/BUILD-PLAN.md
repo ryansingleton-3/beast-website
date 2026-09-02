@@ -42,7 +42,9 @@ the site: Home page has 0 nodes, 0 styles, 0 variables, 0 collections.
 8. Verify with `data_element_tool > get_all_elements` (depth 2) — 17 top-level blocks in order:
    nav, hero, ticker, programs, stats, about, gallery, why, stories, spotlight, testimonials, pricing,
    merch, faq, location, schedule, book-band, contact, footer.
-9. DO NOT publish. Report to Ryan; he previews in the Designer.
+9. Publish to the **Webflow subdomain only** (`data_sites_tool > publish_site` with
+   `publishToWebflowSubdomain: true`, no custom domains). Ryan approved this 2026-09-02: "push it to
+   Webflow, leave it on that webflow domain." Never add a custom domain. Report the b-e-a-s-t.webflow.io URL.
 
 ## whtml rules (from the v2 guide)
 - html: exactly one root element, no `<style>`. css: raw rules, no `@keyframes`, only these media
