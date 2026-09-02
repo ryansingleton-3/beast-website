@@ -1,0 +1,22 @@
+.beast-pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-column-gap: 1.75rem; column-gap: 1.75rem; grid-row-gap: 1.75rem; row-gap: 1.75rem; align-items: stretch; }
+.beast-pricing-card { padding-top: 2.25rem; padding-bottom: 2.25rem; padding-left: 1.75rem; padding-right: 1.75rem; background-color: #ffffff; border-width: 1px; border-style: solid; border-color: #dde3ea; border-left-width: 3px; border-left-color: #8AB9E3; display: flex; flex-direction: column; position: relative; }
+.beast-pricing-card:hover { box-shadow: 0 6px 20px rgba(138, 185, 227, 0.1); }
+.beast-pricing-card--featured { background-color: #f0f6fb; border-color: rgba(138, 185, 227, 0.4); border-left-color: #8AB9E3; transform: translateY(-8px); box-shadow: 0 6px 24px rgba(138, 185, 227, 0.12); }
+.beast-pricing-badge { position: absolute; top: -0.75rem; right: 1.25rem; background-color: #8AB9E3; color: #ffffff; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; padding-top: 0.35rem; padding-bottom: 0.35rem; padding-left: 0.9rem; padding-right: 0.9rem; }
+.beast-pricing-tier { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; color: #8AB9E3; margin-bottom: 0.75rem; }
+.beast-pricing-price { font-family: 'Rubik Dirt', cursive; font-size: 3rem; line-height: 1; color: #111111; margin-bottom: 0.35rem; }
+.beast-pricing-period { font-family: 'Barlow', sans-serif; font-size: 0.9rem; color: #666666; margin-left: 0.35rem; font-weight: 400; }
+.beast-pricing-save { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: #666666; margin-bottom: 1.5rem; }
+.beast-pricing-features { list-style-type: none; padding-left: 0; margin-top: 0; margin-bottom: 2rem; flex-grow: 1; }
+.beast-pricing-feature { font-size: 0.9rem; color: #111111; padding-top: 0.6rem; padding-bottom: 0.6rem; padding-left: 1.5rem; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #dde3ea; position: relative; }
+.beast-pricing-feature::before { content: "✓"; color: #8AB9E3; position: absolute; left: 0; font-weight: 700; }
+.beast-pricing-cta { display: block; text-align: center; background-color: #8AB9E3; color: #ffffff; padding-top: 0.85rem; padding-bottom: 0.85rem; padding-left: 1.5rem; padding-right: 1.5rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 3px; font-size: 0.85rem; text-transform: uppercase; text-decoration: none; width: 100%; }
+.beast-pricing-cta:hover { background-color: #6C9DC6; }
+.beast-pricing-extras { margin-top: 3rem; display: grid; grid-template-columns: repeat(4, 1fr); grid-column-gap: 1rem; column-gap: 1rem; grid-row-gap: 1rem; row-gap: 1rem; max-width: 1100px; margin-left: auto; margin-right: auto; }
+.beast-pricing-extra { display: block; background-color: #ffffff; border-width: 1px; border-style: solid; border-color: #dde3ea; border-left-width: 3px; border-left-color: #8AB9E3; padding-top: 1.25rem; padding-bottom: 1.25rem; padding-left: 1.5rem; padding-right: 1.5rem; text-align: left; text-decoration: none; }
+.beast-pricing-extra-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; color: #111111; margin-bottom: 0.5rem; }
+.beast-pricing-extra-price { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 1.1rem; color: #8AB9E3; letter-spacing: 1px; margin-bottom: 0.25rem; }
+.beast-pricing-extra-note { font-size: 0.8rem; color: #666666; }
+@media screen and (max-width: 991px) { .beast-pricing-extras { grid-template-columns: repeat(2, 1fr); } }
+@media screen and (max-width: 767px) { .beast-pricing-grid { grid-template-columns: 1fr; } .beast-pricing-card--featured { transform: none; } }
+@media screen and (max-width: 479px) { .beast-pricing-card { padding-top: 1.75rem; padding-bottom: 1.75rem; padding-left: 1.5rem; padding-right: 1.5rem; } .beast-pricing-price { font-size: 2.5rem; } .beast-pricing-extras { grid-template-columns: 1fr; } }

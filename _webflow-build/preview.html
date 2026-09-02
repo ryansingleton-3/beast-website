@@ -1,0 +1,650 @@
+<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>B.E.A.S.T. — Webflow build preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Base type — same as the Shopify theme (16px root, Barlow body). */
+  html { font-size: 100%; }
+  body { margin: 0; background: #f5f6f7; color: #111111; font-family: 'Barlow', sans-serif; font-weight: 400; font-size: 1rem; line-height: 1.7; }
+  h1, h2, h3 { font-family: 'Rubik Dirt', cursive; text-transform: uppercase; font-weight: 400; margin: 0; }
+  p { margin: 0; }
+  /* Ticker scroll — @keyframes are not allowed inside whtml css, so they live here. */
+  @keyframes beast-ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  .beast-ticker-track { animation: beast-ticker-scroll 30s linear infinite; }
+  @media (prefers-reduced-motion: reduce) { .beast-ticker-track { animation: none; } }
+</style>
+<style>.beast-section { padding-top: 5rem; padding-bottom: 5rem; padding-left: 80px; padding-right: 80px; }
+.beast-section--card { background-color: #ffffff; }
+.beast-section--bg { background-color: #f5f6f7; }
+.beast-wrap { max-width: 1280px; margin-left: auto; margin-right: auto; }
+.beast-section-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; color: #8AB9E3; margin-bottom: 0.6rem; }
+.beast-section-title { font-family: 'Rubik Dirt', cursive; font-size: 3rem; line-height: 1.05; letter-spacing: 2px; text-transform: uppercase; color: #111111; margin-bottom: 2.5rem; }
+.beast-section-sub { font-family: 'Barlow', sans-serif; font-size: 1rem; color: #666666; max-width: 620px; margin-top: -1.5rem; margin-bottom: 2.5rem; line-height: 1.7; }
+.beast-btn-primary { display: inline-block; background-color: #8AB9E3; color: #ffffff; padding-top: 0.85rem; padding-bottom: 0.85rem; padding-left: 2rem; padding-right: 2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 3px; font-size: 0.9rem; text-transform: uppercase; text-decoration: none; border-style: none; cursor: pointer; }
+.beast-btn-primary:hover { background-color: #6C9DC6; }
+.beast-btn-outline { display: inline-block; background-color: transparent; color: #8AB9E3; padding-top: 0.85rem; padding-bottom: 0.85rem; padding-left: 2rem; padding-right: 2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 3px; font-size: 0.9rem; text-transform: uppercase; text-decoration: none; border-width: 1px; border-style: solid; border-color: #8AB9E3; cursor: pointer; }
+.beast-btn-outline:hover { background-color: rgba(138, 185, 227, 0.08); }
+@media screen and (max-width: 767px) {
+  .beast-section { padding-top: 4rem; padding-bottom: 4rem; padding-left: 40px; padding-right: 40px; }
+  .beast-section-title { font-size: 2.5rem; }
+}
+@media screen and (max-width: 479px) {
+  .beast-section { padding-top: 3rem; padding-bottom: 3rem; padding-left: 20px; padding-right: 20px; }
+  .beast-section-title { font-size: 2.2rem; }
+}
+
+.beast-section { padding-top: 5rem; padding-bottom: 5rem; padding-left: 80px; padding-right: 80px; }
+.beast-section--card { background-color: #ffffff; }
+.beast-section--bg { background-color: #f5f6f7; }
+.beast-wrap { max-width: 1280px; margin-left: auto; margin-right: auto; }
+.beast-section-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; color: #8AB9E3; margin-bottom: 0.6rem; }
+.beast-section-title { font-family: 'Rubik Dirt', cursive; font-size: 3rem; line-height: 1.05; letter-spacing: 2px; text-transform: uppercase; color: #111111; margin-bottom: 2.5rem; }
+.beast-section-sub { font-family: 'Barlow', sans-serif; font-size: 1rem; color: #666666; max-width: 620px; margin-top: -1.5rem; margin-bottom: 2.5rem; line-height: 1.7; }
+.beast-btn-primary { display: inline-block; background-color: #8AB9E3; color: #ffffff; padding-top: 0.85rem; padding-bottom: 0.85rem; padding-left: 2rem; padding-right: 2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 3px; font-size: 0.9rem; text-transform: uppercase; text-decoration: none; border-style: none; cursor: pointer; }
+.beast-btn-primary:hover { background-color: #6C9DC6; }
+.beast-btn-outline { display: inline-block; background-color: transparent; color: #8AB9E3; padding-top: 0.85rem; padding-bottom: 0.85rem; padding-left: 2rem; padding-right: 2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 3px; font-size: 0.9rem; text-transform: uppercase; text-decoration: none; border-width: 1px; border-style: solid; border-color: #8AB9E3; cursor: pointer; }
+.beast-btn-outline:hover { background-color: rgba(138, 185, 227, 0.08); }
+@media screen and (max-width: 767px) {
+  .beast-section { padding-top: 4rem; padding-bottom: 4rem; padding-left: 40px; padding-right: 40px; }
+  .beast-section-title { font-size: 2.5rem; }
+}
+@media screen and (max-width: 479px) {
+  .beast-section { padding-top: 3rem; padding-bottom: 3rem; padding-left: 20px; padding-right: 20px; }
+  .beast-section-title { font-size: 2.2rem; }
+}
+
+.beast-nav { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; padding-bottom: 1rem; padding-left: 80px; padding-right: 80px; background-color: #ffffff; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #dde3ea; position: sticky; top: 0; z-index: 100; }
+.beast-nav-logo { display: block; }
+.beast-nav-logo-img { height: 55px; width: auto; display: block; }
+.beast-nav-links { display: flex; grid-column-gap: 2rem; column-gap: 2rem; align-items: center; }
+.beast-nav-link { color: #666666; text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; }
+.beast-nav-link:hover { color: #8AB9E3; }
+.beast-nav-cta { background-color: #8AB9E3; color: #ffffff; padding-top: 0.55rem; padding-bottom: 0.55rem; padding-left: 1.5rem; padding-right: 1.5rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 3px; font-size: 0.85rem; text-transform: uppercase; text-decoration: none; }
+.beast-nav-cta:hover { background-color: #6C9DC6; }
+@media screen and (max-width: 767px) {
+  .beast-nav { padding-left: 40px; padding-right: 40px; grid-column-gap: 1rem; column-gap: 1rem; }
+  .beast-nav-links { grid-column-gap: 1rem; column-gap: 1rem; }
+  .beast-nav-link { font-size: 0.75rem; }
+}
+@media screen and (max-width: 479px) {
+  .beast-nav { padding-top: 0.8rem; padding-bottom: 0.8rem; padding-left: 20px; padding-right: 20px; flex-wrap: wrap; grid-row-gap: 0.75rem; row-gap: 0.75rem; }
+  .beast-nav-links { order: 3; width: 100%; justify-content: center; flex-wrap: wrap; grid-column-gap: 0.75rem; column-gap: 0.75rem; }
+  .beast-nav-link { font-size: 0.7rem; letter-spacing: 1px; }
+  .beast-nav-cta { font-size: 0.75rem; padding-top: 0.45rem; padding-bottom: 0.45rem; padding-left: 1rem; padding-right: 1rem; }
+}
+
+.beast-hero { display: grid; grid-template-columns: 1fr 480px; min-height: 700px; background-color: #ffffff; position: relative; }
+.beast-hero-grid { position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(138, 185, 227, 0.06) 60px), repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(138, 185, 227, 0.06) 60px); pointer-events: none; z-index: 1; }
+.beast-hero-left { padding-top: 5rem; padding-bottom: 5rem; padding-left: 80px; padding-right: 80px; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
+.beast-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; color: #8AB9E3; margin-bottom: 1rem; }
+.beast-hero-title { font-family: 'Rubik Dirt', cursive; font-size: 7rem; line-height: 0.9; letter-spacing: 2px; margin-bottom: 1.5rem; color: #111111; text-transform: uppercase; }
+.beast-accent { color: #8AB9E3; display: inline-block; white-space: nowrap; }
+.beast-hero-sub { font-size: 1.05rem; color: #777777; line-height: 1.7; max-width: 460px; margin-bottom: 2.5rem; }
+.beast-btns { display: flex; grid-column-gap: 1rem; column-gap: 1rem; grid-row-gap: 0.75rem; row-gap: 0.75rem; }
+.beast-hero-logo { background-color: #edf1f5; border-left-width: 1px; border-left-style: solid; border-left-color: rgba(138, 185, 227, 0.15); display: flex; align-items: center; justify-content: center; padding-top: 2rem; padding-bottom: 2rem; padding-left: 2rem; padding-right: 2rem; position: relative; z-index: 2; }
+.beast-hero-logo-img { width: 100%; max-width: 420px; height: auto; display: block; }
+@media screen and (max-width: 767px) {
+  .beast-hero { grid-template-columns: 1fr; min-height: auto; }
+  .beast-hero-left { padding-top: 3.5rem; padding-bottom: 3.5rem; padding-left: 40px; padding-right: 40px; }
+  .beast-hero-title { font-size: 5rem; }
+  .beast-hero-logo { padding-top: 3rem; padding-bottom: 3rem; padding-left: 1.5rem; padding-right: 1.5rem; border-left-style: none; border-top-width: 1px; border-top-style: solid; border-top-color: #dde3ea; }
+  .beast-hero-logo-img { max-width: 300px; }
+}
+@media screen and (max-width: 479px) {
+  .beast-hero-left { padding-top: 2.5rem; padding-bottom: 2.5rem; padding-left: 20px; padding-right: 20px; }
+  .beast-hero-title { font-size: 3.2rem; }
+  .beast-hero-sub { font-size: 0.92rem; }
+  .beast-btns { flex-direction: column; }
+  .beast-eyebrow { font-size: 0.7rem; letter-spacing: 3px; }
+}
+
+.beast-ticker { background-color: #8AB9E3; padding-top: 0.75rem; padding-bottom: 0.75rem; overflow: hidden; white-space: nowrap; }
+.beast-ticker-track { display: flex; grid-column-gap: 3rem; column-gap: 3rem; width: max-content; }
+.beast-ticker-i { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 3px; color: #0a0a0a; text-transform: uppercase; white-space: nowrap; flex-shrink: 0; }
+
+.beast-programs-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-column-gap: 1px; column-gap: 1px; grid-row-gap: 1px; row-gap: 1px; background-color: #dde3ea; }
+.beast-program-card { background-color: #ffffff; padding-top: 2rem; padding-bottom: 2rem; padding-left: 1.5rem; padding-right: 1.5rem; border-left-width: 3px; border-left-style: solid; border-left-color: transparent; }
+.beast-program-card:hover { border-left-color: #8AB9E3; }
+.beast-program-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.05rem; letter-spacing: 2px; text-transform: uppercase; color: #111111; margin-bottom: 0.5rem; }
+.beast-program-desc { font-size: 0.88rem; color: #999999; line-height: 1.7; }
+@media screen and (max-width: 767px) { .beast-programs-grid { grid-template-columns: repeat(2, 1fr); } }
+@media screen and (max-width: 479px) { .beast-programs-grid { grid-template-columns: 1fr; } }
+
+.beast-stats { display: flex; grid-column-gap: 4rem; column-gap: 4rem; grid-row-gap: 2rem; row-gap: 2rem; padding-top: 3.5rem; padding-bottom: 3.5rem; padding-left: 80px; padding-right: 80px; background-color: #ffffff; border-top-width: 1px; border-top-style: solid; border-top-color: #dde3ea; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #dde3ea; justify-content: center; flex-wrap: wrap; }
+.beast-stat { text-align: center; }
+.beast-stat-num { font-family: 'Rubik Dirt', cursive; font-size: 3.5rem; color: #8AB9E3; line-height: 1; }
+.beast-stat-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: #bbbbbb; margin-top: 6px; }
+@media screen and (max-width: 767px) { .beast-stats { padding-top: 3rem; padding-bottom: 3rem; padding-left: 40px; padding-right: 40px; grid-column-gap: 2.5rem; column-gap: 2.5rem; } }
+@media screen and (max-width: 479px) { .beast-stats { padding-top: 2.5rem; padding-bottom: 2.5rem; padding-left: 20px; padding-right: 20px; grid-column-gap: 2rem; column-gap: 2rem; } .beast-stat-num { font-size: 2.5rem; } }
+
+.beast-about-grid { display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 4rem; column-gap: 4rem; grid-row-gap: 2.5rem; row-gap: 2.5rem; align-items: center; }
+.beast-about-title { margin-bottom: 1.5rem; }
+.beast-about-body { font-size: 1rem; color: #666666; line-height: 1.8; max-width: 520px; }
+.beast-about-photo { border-width: 1px; border-style: solid; border-color: #dde3ea; border-left-width: 3px; border-left-color: #8AB9E3; overflow: hidden; }
+.beast-about-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media screen and (max-width: 767px) { .beast-about-grid { grid-template-columns: 1fr; } }
+
+.beast-gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-column-gap: 1.25rem; column-gap: 1.25rem; grid-row-gap: 1.25rem; row-gap: 1.25rem; }
+.beast-gallery-item { aspect-ratio: 4 / 3; background-color: #eef2f6; border-width: 1px; border-style: solid; border-color: #dde3ea; border-left-width: 3px; border-left-color: #8AB9E3; overflow: hidden; }
+.beast-gallery-item:hover { box-shadow: 0 4px 16px rgba(138, 185, 227, 0.1); }
+.beast-gallery-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media screen and (max-width: 767px) { .beast-gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+@media screen and (max-width: 479px) { .beast-gallery-grid { grid-template-columns: 1fr; grid-column-gap: 1rem; column-gap: 1rem; grid-row-gap: 1rem; row-gap: 1rem; } }
+
+.beast-why-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-column-gap: 2rem; column-gap: 2rem; grid-row-gap: 2rem; row-gap: 2rem; }
+.beast-why-card { padding-top: 2rem; padding-bottom: 2rem; padding-left: 2rem; padding-right: 2rem; background-color: #ffffff; border-width: 1px; border-style: solid; border-color: #dde3ea; border-top-width: 3px; border-top-color: #8AB9E3; }
+.beast-why-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.05rem; letter-spacing: 2px; text-transform: uppercase; color: #111111; margin-bottom: 0.75rem; }
+.beast-why-desc { font-size: 0.9rem; color: #666666; line-height: 1.7; }
+@media screen and (max-width: 767px) { .beast-why-grid { grid-template-columns: 1fr 1fr; } }
+@media screen and (max-width: 479px) { .beast-why-grid { grid-template-columns: 1fr; } }
+
+.beast-stories-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-column-gap: 2rem; column-gap: 2rem; grid-row-gap: 2rem; row-gap: 2rem; }
+.beast-story-card { padding-top: 2rem; padding-bottom: 2rem; padding-left: 2rem; padding-right: 2rem; background-color: #ffffff; border-width: 1px; border-style: solid; border-color: #dde3ea; border-left-width: 3px; border-left-color: #8AB9E3; }
+.beast-story-card:hover { box-shadow: 0 4px 16px rgba(138, 185, 227, 0.08); }
+.beast-story-name { font-family: 'Rubik Dirt', cursive; font-size: 1.6rem; letter-spacing: 1px; text-transform: uppercase; color: #111111; margin-bottom: 0.3rem; }
+.beast-story-tag { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: #8AB9E3; border-width: 1px; border-style: solid; border-color: rgba(138, 185, 227, 0.4); padding-top: 0.25rem; padding-bottom: 0.25rem; padding-left: 0.6rem; padding-right: 0.6rem; margin-bottom: 1rem; }
+.beast-story-body { font-size: 0.92rem; color: #666666; line-height: 1.7; }
+@media screen and (max-width: 767px) { .beast-stories-grid { grid-template-columns: 1fr; } }
+@media screen and (max-width: 479px) { .beast-story-card { padding-top: 1.5rem; padding-bottom: 1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; } }
+
+.beast-spotlight { background-color: #f0f6fb; }
+.beast-spotlight-card { display: grid; grid-template-columns: 0.85fr 1fr; background-color: #ffffff; border-width: 1px; border-style: solid; border-color: #dde3ea; border-left-width: 3px; border-left-color: #8AB9E3; overflow: hidden; box-shadow: 0 6px 24px rgba(138, 185, 227, 0.1); }
+.beast-spotlight-photo { position: relative; min-height: 440px; }
+.beast-spotlight-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.beast-spotlight-month { position: absolute; top: 1rem; left: 1rem; background-color: #8AB9E3; color: #ffffff; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; padding-top: 0.4rem; padding-bottom: 0.4rem; padding-left: 0.9rem; padding-right: 0.9rem; }
+.beast-spotlight-content { padding-top: 2.75rem; padding-bottom: 2.75rem; padding-left: 2.5rem; padding-right: 2.5rem; display: flex; flex-direction: column; justify-content: center; }
+.beast-spotlight-badge { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: #8AB9E3; margin-bottom: 0.75rem; }
+.beast-spotlight-name { font-family: 'Rubik Dirt', cursive; font-size: 2.5rem; line-height: 1; letter-spacing: 1px; text-transform: uppercase; color: #111111; margin-bottom: 1rem; }
+.beast-spotlight-tags { display: flex; flex-wrap: wrap; grid-column-gap: 0.6rem; column-gap: 0.6rem; grid-row-gap: 0.6rem; row-gap: 0.6rem; margin-bottom: 1.5rem; }
+.beast-spotlight-tag { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: #8AB9E3; border-width: 1px; border-style: solid; border-color: rgba(138, 185, 227, 0.4); padding-top: 0.25rem; padding-bottom: 0.25rem; padding-left: 0.6rem; padding-right: 0.6rem; }
+.beast-spotlight-body { font-size: 0.95rem; color: #666666; line-height: 1.8; margin-bottom: 1.75rem; }
+.beast-spotlight-stats { display: flex; grid-column-gap: 2.5rem; column-gap: 2.5rem; grid-row-gap: 1rem; row-gap: 1rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
+.beast-spotlight-stat-num { font-family: 'Rubik Dirt', cursive; font-size: 2rem; line-height: 1; color: #8AB9E3; }
+.beast-spotlight-stat-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: #666666; margin-top: 0.4rem; }
+.beast-spotlight-quote { border-left-width: 3px; border-left-style: solid; border-left-color: #8AB9E3; padding-left: 1.25rem; margin-top: 0; margin-bottom: 0; margin-left: 0; margin-right: 0; font-family: 'Barlow', sans-serif; font-style: italic; font-size: 1rem; line-height: 1.7; color: #111111; }
+@media screen and (max-width: 767px) { .beast-spotlight-card { grid-template-columns: 1fr; } .beast-spotlight-photo { min-height: 320px; } }
+@media screen and (max-width: 479px) { .beast-spotlight-content { padding-top: 2rem; padding-bottom: 2rem; padding-left: 1.5rem; padding-right: 1.5rem; } .beast-spotlight-name { font-size: 2rem; } .beast-spotlight-stats { grid-column-gap: 1.5rem; column-gap: 1.5rem; } }
+
+.beast-testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-column-gap: 1.5rem; column-gap: 1.5rem; grid-row-gap: 1.5rem; row-gap: 1.5rem; }
+.beast-testimonial { padding-top: 2rem; padding-bottom: 2rem; padding-left: 1.75rem; padding-right: 1.75rem; background-color: #f5f6f7; border-width: 1px; border-style: solid; border-color: #dde3ea; border-left-width: 3px; border-left-color: #8AB9E3; position: relative; }
+.beast-testimonial:hover { box-shadow: 0 4px 16px rgba(138, 185, 227, 0.08); }
+.beast-testimonial-text { font-family: 'Barlow', sans-serif; font-style: italic; font-size: 0.95rem; line-height: 1.7; color: #111111; margin-bottom: 1.25rem; }
+.beast-testimonial-author { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: #666666; }
+@media screen and (max-width: 767px) { .beast-testimonials-grid { grid-template-columns: repeat(2, 1fr); } }
+@media screen and (max-width: 479px) { .beast-testimonials-grid { grid-template-columns: 1fr; } }
+
+.beast-pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-column-gap: 1.75rem; column-gap: 1.75rem; grid-row-gap: 1.75rem; row-gap: 1.75rem; align-items: stretch; }
+.beast-pricing-card { padding-top: 2.25rem; padding-bottom: 2.25rem; padding-left: 1.75rem; padding-right: 1.75rem; background-color: #ffffff; border-width: 1px; border-style: solid; border-color: #dde3ea; border-left-width: 3px; border-left-color: #8AB9E3; display: flex; flex-direction: column; position: relative; }
+.beast-pricing-card:hover { box-shadow: 0 6px 20px rgba(138, 185, 227, 0.1); }
+.beast-pricing-card--featured { background-color: #f0f6fb; border-color: rgba(138, 185, 227, 0.4); border-left-color: #8AB9E3; transform: translateY(-8px); box-shadow: 0 6px 24px rgba(138, 185, 227, 0.12); }
+.beast-pricing-badge { position: absolute; top: -0.75rem; right: 1.25rem; background-color: #8AB9E3; color: #ffffff; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; padding-top: 0.35rem; padding-bottom: 0.35rem; padding-left: 0.9rem; padding-right: 0.9rem; }
+.beast-pricing-tier { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; color: #8AB9E3; margin-bottom: 0.75rem; }
+.beast-pricing-price { font-family: 'Rubik Dirt', cursive; font-size: 3rem; line-height: 1; color: #111111; margin-bottom: 0.35rem; }
+.beast-pricing-period { font-family: 'Barlow', sans-serif; font-size: 0.9rem; color: #666666; margin-left: 0.35rem; font-weight: 400; }
+.beast-pricing-save { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: #666666; margin-bottom: 1.5rem; }
+.beast-pricing-features { list-style-type: none; padding-left: 0; margin-top: 0; margin-bottom: 2rem; flex-grow: 1; }
+.beast-pricing-feature { font-size: 0.9rem; color: #111111; padding-top: 0.6rem; padding-bottom: 0.6rem; padding-left: 1.5rem; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #dde3ea; position: relative; }
+.beast-pricing-feature::before { content: "✓"; color: #8AB9E3; position: absolute; left: 0; font-weight: 700; }
+.beast-pricing-cta { display: block; text-align: center; background-color: #8AB9E3; color: #ffffff; padding-top: 0.85rem; padding-bottom: 0.85rem; padding-left: 1.5rem; padding-right: 1.5rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 3px; font-size: 0.85rem; text-transform: uppercase; text-decoration: none; width: 100%; }
+.beast-pricing-cta:hover { background-color: #6C9DC6; }
+.beast-pricing-extras { margin-top: 3rem; display: grid; grid-template-columns: repeat(4, 1fr); grid-column-gap: 1rem; column-gap: 1rem; grid-row-gap: 1rem; row-gap: 1rem; max-width: 1100px; margin-left: auto; margin-right: auto; }
+.beast-pricing-extra { display: block; background-color: #ffffff; border-width: 1px; border-style: solid; border-color: #dde3ea; border-left-width: 3px; border-left-color: #8AB9E3; padding-top: 1.25rem; padding-bottom: 1.25rem; padding-left: 1.5rem; padding-right: 1.5rem; text-align: left; text-decoration: none; }
+.beast-pricing-extra-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; color: #111111; margin-bottom: 0.5rem; }
+.beast-pricing-extra-price { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 1.1rem; color: #8AB9E3; letter-spacing: 1px; margin-bottom: 0.25rem; }
+.beast-pricing-extra-note { font-size: 0.8rem; color: #666666; }
+@media screen and (max-width: 991px) { .beast-pricing-extras { grid-template-columns: repeat(2, 1fr); } }
+@media screen and (max-width: 767px) { .beast-pricing-grid { grid-template-columns: 1fr; } .beast-pricing-card--featured { transform: none; } }
+@media screen and (max-width: 479px) { .beast-pricing-card { padding-top: 1.75rem; padding-bottom: 1.75rem; padding-left: 1.5rem; padding-right: 1.5rem; } .beast-pricing-price { font-size: 2.5rem; } .beast-pricing-extras { grid-template-columns: 1fr; } }
+
+.beast-merch { text-align: center; }
+.beast-merch-sub { color: #666666; max-width: 620px; margin-left: auto; margin-right: auto; margin-top: -1.5rem; margin-bottom: 3rem; font-size: 1rem; line-height: 1.7; }
+.beast-merch-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-column-gap: 1.5rem; column-gap: 1.5rem; grid-row-gap: 1.5rem; row-gap: 1.5rem; max-width: 1200px; margin-left: auto; margin-right: auto; }
+.beast-merch-card { background-color: #ffffff; border-width: 1px; border-style: solid; border-color: #dde3ea; padding-top: 1.5rem; padding-bottom: 1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; text-align: center; }
+.beast-merch-card:hover { border-color: #8AB9E3; }
+.beast-merch-ph { background-color: rgba(138, 185, 227, 0.08); border-width: 1px; border-style: dashed; border-color: rgba(138, 185, 227, 0.3); aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; margin-bottom: 1rem; }
+.beast-merch-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; color: #111111; margin-bottom: 0.4rem; }
+.beast-merch-note { font-size: 0.8rem; color: #666666; }
+.beast-merch-foot { margin-top: 2.5rem; font-size: 0.9rem; color: #666666; }
+.beast-merch-link { color: #8AB9E3; text-decoration: none; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgba(138, 185, 227, 0.4); }
+@media screen and (max-width: 991px) { .beast-merch-grid { grid-template-columns: repeat(2, 1fr); } }
+@media screen and (max-width: 479px) { .beast-merch-grid { grid-template-columns: 1fr; grid-column-gap: 1rem; column-gap: 1rem; grid-row-gap: 1rem; row-gap: 1rem; } }
+
+.beast-faq-list { display: flex; flex-direction: column; grid-row-gap: 1rem; row-gap: 1rem; max-width: 960px; }
+.beast-faq-item { padding-top: 1.5rem; padding-bottom: 1.5rem; padding-left: 1.75rem; padding-right: 1.75rem; background-color: #f5f6f7; border-width: 1px; border-style: solid; border-color: #dde3ea; border-left-width: 3px; border-left-color: #8AB9E3; }
+.beast-faq-item:hover { box-shadow: 0 2px 10px rgba(138, 185, 227, 0.08); }
+.beast-faq-q { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; color: #111111; margin-bottom: 0.5rem; }
+.beast-faq-a { font-size: 0.92rem; color: #666666; line-height: 1.7; }
+@media screen and (max-width: 479px) { .beast-faq-item { padding-top: 1.25rem; padding-bottom: 1.25rem; padding-left: 1.25rem; padding-right: 1.25rem; } .beast-faq-q { font-size: 0.9rem; letter-spacing: 1.5px; } }
+
+.beast-location-grid { display: grid; grid-template-columns: 1fr 1.1fr; grid-column-gap: 3rem; column-gap: 3rem; grid-row-gap: 2rem; row-gap: 2rem; align-items: start; }
+.beast-location-info { display: flex; flex-direction: column; grid-row-gap: 2rem; row-gap: 2rem; }
+.beast-location-block { padding-top: 1.25rem; padding-bottom: 1.25rem; padding-left: 1.5rem; padding-right: 1.5rem; background-color: #ffffff; border-width: 1px; border-style: solid; border-color: #dde3ea; border-left-width: 3px; border-left-color: #8AB9E3; }
+.beast-location-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; color: #8AB9E3; margin-bottom: 0.75rem; }
+.beast-location-text { font-size: 0.95rem; color: #111111; line-height: 1.7; }
+.beast-location-text--muted { color: #666666; }
+.beast-location-map { width: 100%; }
+.beast-location-iframe { display: block; width: 100%; aspect-ratio: 4 / 3; border-width: 1px; border-style: solid; border-color: #dde3ea; border-left-width: 3px; border-left-color: #8AB9E3; }
+@media screen and (max-width: 767px) { .beast-location-grid { grid-template-columns: 1fr; } }
+
+.beast-schedule-ph { min-height: 400px; background-color: #f5f6f7; background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(138, 185, 227, 0.07) 40px), repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(138, 185, 227, 0.07) 40px); border-width: 1px; border-style: solid; border-color: #dde3ea; border-left-width: 3px; border-left-color: #8AB9E3; display: flex; flex-direction: column; align-items: center; justify-content: center; grid-row-gap: 0.75rem; row-gap: 0.75rem; }
+.beast-schedule-ph-title { font-family: 'Rubik Dirt', cursive; font-size: 1.75rem; color: #8AB9E3; text-transform: uppercase; letter-spacing: 2px; text-align: center; padding-left: 1rem; padding-right: 1rem; }
+.beast-schedule-ph-note { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: #666666; }
+@media screen and (max-width: 479px) { .beast-schedule-ph { min-height: 320px; } .beast-schedule-ph-title { font-size: 1.2rem; } }
+
+.beast-book-band { background-color: #8AB9E3; padding-top: 3.5rem; padding-bottom: 3.5rem; padding-left: 80px; padding-right: 80px; display: flex; justify-content: space-between; align-items: center; grid-column-gap: 1.5rem; column-gap: 1.5rem; grid-row-gap: 1.5rem; row-gap: 1.5rem; }
+.beast-book-text { font-family: 'Rubik Dirt', cursive; font-size: 2.5rem; color: #0a0a0a; letter-spacing: 2px; text-transform: uppercase; }
+.beast-book-btn { background-color: #0a0a0a; color: #ffffff; padding-top: 0.85rem; padding-bottom: 0.85rem; padding-left: 2.5rem; padding-right: 2.5rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 3px; font-size: 0.9rem; text-transform: uppercase; text-decoration: none; white-space: nowrap; }
+.beast-book-btn:hover { background-color: #222222; }
+@media screen and (max-width: 767px) { .beast-book-band { padding-top: 3rem; padding-bottom: 3rem; padding-left: 40px; padding-right: 40px; flex-direction: column; text-align: center; } .beast-book-text { font-size: 2rem; } }
+@media screen and (max-width: 479px) { .beast-book-band { padding-top: 2.5rem; padding-bottom: 2.5rem; padding-left: 20px; padding-right: 20px; } .beast-book-text { font-size: 1.8rem; } }
+
+.beast-contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; grid-column-gap: 3rem; column-gap: 3rem; grid-row-gap: 2.5rem; row-gap: 2.5rem; align-items: start; }
+.beast-contact-info { display: flex; flex-direction: column; grid-row-gap: 1rem; row-gap: 1rem; margin-bottom: 2rem; }
+.beast-contact-item { display: flex; align-items: center; grid-column-gap: 1rem; column-gap: 1rem; padding-top: 1rem; padding-bottom: 1rem; padding-left: 1.25rem; padding-right: 1.25rem; background-color: #ffffff; border-width: 1px; border-style: solid; border-color: #dde3ea; border-left-width: 3px; border-left-color: #8AB9E3; }
+.beast-contact-icon { font-size: 1.2rem; color: #8AB9E3; flex-shrink: 0; width: 28px; text-align: center; }
+.beast-contact-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: #8AB9E3; margin-bottom: 0.15rem; }
+.beast-contact-value { font-size: 0.95rem; color: #111111; }
+.beast-contact-link { color: #111111; text-decoration: none; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgba(138, 185, 227, 0.3); }
+.beast-contact-link:hover { border-bottom-color: #8AB9E3; }
+.beast-form { display: flex; flex-direction: column; grid-row-gap: 1rem; row-gap: 1rem; padding-top: 1.75rem; padding-bottom: 1.75rem; padding-left: 1.75rem; padding-right: 1.75rem; background-color: #ffffff; border-width: 1px; border-style: solid; border-color: #dde3ea; border-left-width: 3px; border-left-color: #8AB9E3; margin-bottom: 0; }
+.beast-field { display: flex; flex-direction: column; grid-row-gap: 0.35rem; row-gap: 0.35rem; }
+.beast-field-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: #8AB9E3; }
+.beast-input { background-color: #ffffff; border-width: 1px; border-style: solid; border-color: #dde3ea; border-radius: 0; color: #111111; font-family: 'Barlow', sans-serif; font-size: 0.95rem; padding-top: 0.75rem; padding-bottom: 0.75rem; padding-left: 1rem; padding-right: 1rem; outline-style: none; width: 100%; height: auto; margin-bottom: 0; }
+.beast-input:focus { border-color: #8AB9E3; }
+.beast-input::placeholder { color: #b8bfc7; }
+.beast-textarea { resize: vertical; min-height: 120px; }
+.beast-form-submit { background-color: #8AB9E3; color: #ffffff; padding-top: 0.9rem; padding-bottom: 0.9rem; padding-left: 1.5rem; padding-right: 1.5rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 3px; font-size: 0.9rem; text-transform: uppercase; border-style: none; border-radius: 0; cursor: pointer; margin-top: 0.5rem; }
+.beast-form-submit:hover { background-color: #6C9DC6; }
+.beast-forms-block { padding-top: 1.75rem; padding-bottom: 1.75rem; padding-left: 1.75rem; padding-right: 1.75rem; background-color: #ffffff; border-width: 1px; border-style: solid; border-color: #dde3ea; border-left-width: 3px; border-left-color: #8AB9E3; }
+.beast-forms-title { font-family: 'Rubik Dirt', cursive; font-size: 1.6rem; color: #111111; margin-bottom: 0.5rem; letter-spacing: 1px; text-transform: uppercase; }
+.beast-forms-desc { font-size: 0.9rem; color: #666666; margin-bottom: 1.5rem; line-height: 1.7; }
+.beast-forms-list { display: flex; flex-direction: column; grid-row-gap: 0.75rem; row-gap: 0.75rem; }
+.beast-form-dl { display: flex; align-items: center; grid-column-gap: 1rem; column-gap: 1rem; padding-top: 1rem; padding-bottom: 1rem; padding-left: 1.25rem; padding-right: 1.25rem; background-color: #f5f6f7; border-width: 1px; border-style: solid; border-color: #dde3ea; border-left-width: 3px; border-left-color: #6aaad6; text-decoration: none; }
+.beast-form-dl:hover { border-left-color: #8AB9E3; }
+.beast-form-dl-icon { font-size: 1.2rem; color: #8AB9E3; flex-shrink: 0; width: 28px; text-align: center; }
+.beast-form-dl-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; color: #111111; margin-bottom: 0.15rem; }
+.beast-form-dl-fmt { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: #666666; }
+@media screen and (max-width: 767px) { .beast-contact-grid { grid-template-columns: 1fr; } }
+@media screen and (max-width: 479px) { .beast-form { padding-top: 1.25rem; padding-bottom: 1.25rem; padding-left: 1.25rem; padding-right: 1.25rem; } .beast-forms-block { padding-top: 1.25rem; padding-bottom: 1.25rem; padding-left: 1.25rem; padding-right: 1.25rem; } .beast-forms-title { font-size: 1.35rem; } }
+
+.beast-footer { background-color: #111111; padding-top: 4rem; padding-bottom: 2rem; padding-left: 80px; padding-right: 80px; }
+.beast-footer-content { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 3rem; grid-column-gap: 2rem; column-gap: 2rem; grid-row-gap: 2rem; row-gap: 2rem; }
+.beast-footer-logo { height: 90px; width: auto; display: block; margin-bottom: 1rem; }
+.beast-footer-tagline { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: #555555; max-width: 300px; }
+.beast-footer-email { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: #8AB9E3; margin-top: 0.75rem; }
+.beast-footer-links { display: flex; grid-column-gap: 2rem; column-gap: 2rem; grid-row-gap: 1rem; row-gap: 1rem; flex-wrap: wrap; }
+.beast-footer-link { color: #888888; text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
+.beast-footer-link:hover { color: #8AB9E3; }
+.beast-footer-bottom { border-top-width: 1px; border-top-style: solid; border-top-color: #222222; padding-top: 1.5rem; text-align: center; font-size: 0.78rem; color: #555555; letter-spacing: 1px; }
+@media screen and (max-width: 767px) { .beast-footer { padding-top: 3rem; padding-left: 40px; padding-right: 40px; } .beast-footer-content { flex-direction: column; align-items: flex-start; } }
+@media screen and (max-width: 479px) { .beast-footer { padding-top: 2.5rem; padding-bottom: 1.5rem; padding-left: 20px; padding-right: 20px; } }
+</style></head><body><header class="beast-nav">
+  <a href="#" class="beast-nav-logo"><img src="https://cdn.prod.website-files.com/6a988ff4622d7065ea2aa7fd/6a9899e02e54af9899c84805_beast-logo.png" alt="B.E.A.S.T." class="beast-nav-logo-img"></a>
+  <nav class="beast-nav-links">
+    <a href="#about" class="beast-nav-link">About</a>
+    <a href="#programs" class="beast-nav-link">Training</a>
+    <a href="#why" class="beast-nav-link">Why B.E.A.S.T.</a>
+    <a href="#pricing" class="beast-nav-link">Pricing</a>
+  </nav>
+  <a href="#pricing" class="beast-nav-cta">Book a Session</a>
+</header>
+
+<section class="beast-hero">
+  <div class="beast-hero-grid"></div>
+  <div class="beast-hero-left">
+    <p class="beast-eyebrow">Borowik's Elite Athletic &amp; Strength Training</p>
+    <h1 class="beast-hero-title">Train Like A <span class="beast-accent">Beast.</span></h1>
+    <p class="beast-hero-sub">Elite strength, speed, and sports performance coaching for youth athletes ages 6+ and adults. Baseball, softball, personal 1-on-1 training, football, and speed &amp; agility.</p>
+    <div class="beast-btns">
+      <a href="#pricing" class="beast-btn-primary">Book a Session</a>
+      <a href="#programs" class="beast-btn-outline">View Programs</a>
+    </div>
+  </div>
+  <div class="beast-hero-logo">
+    <img src="https://cdn.prod.website-files.com/6a988ff4622d7065ea2aa7fd/6a9899e02e54af9899c84805_beast-logo.png" alt="B.E.A.S.T." class="beast-hero-logo-img">
+  </div>
+</section>
+
+<div class="beast-ticker">
+  <div class="beast-ticker-track">
+    <span class="beast-ticker-i">Baseball &amp; Softball</span><span class="beast-ticker-i">★</span>
+    <span class="beast-ticker-i">Personal 1-on-1 Training</span><span class="beast-ticker-i">★</span>
+    <span class="beast-ticker-i">Football</span><span class="beast-ticker-i">★</span>
+    <span class="beast-ticker-i">Speed &amp; Agility</span><span class="beast-ticker-i">★</span>
+    <span class="beast-ticker-i">Youth Programs</span><span class="beast-ticker-i">★</span>
+    <span class="beast-ticker-i">Adult Strength &amp; Nutrition</span><span class="beast-ticker-i">★</span>
+    <span class="beast-ticker-i">Baseball &amp; Softball</span><span class="beast-ticker-i">★</span>
+    <span class="beast-ticker-i">Personal 1-on-1 Training</span><span class="beast-ticker-i">★</span>
+    <span class="beast-ticker-i">Football</span><span class="beast-ticker-i">★</span>
+    <span class="beast-ticker-i">Speed &amp; Agility</span><span class="beast-ticker-i">★</span>
+    <span class="beast-ticker-i">Youth Programs</span><span class="beast-ticker-i">★</span>
+    <span class="beast-ticker-i">Adult Strength &amp; Nutrition</span><span class="beast-ticker-i">★</span>
+  </div>
+</div>
+
+<section id="programs" class="beast-section beast-section--bg">
+  <div class="beast-wrap">
+    <p class="beast-section-label">What We Offer</p>
+    <h2 class="beast-section-title">Programs</h2>
+    <div class="beast-programs-grid">
+      <div class="beast-program-card">
+        <div class="beast-program-name">Baseball &amp; Softball</div>
+        <div class="beast-program-desc">Youth skills development — hitting, fielding, throwing mechanics, position-specific training, plus mental focus and toughness training.</div>
+      </div>
+      <div class="beast-program-card">
+        <div class="beast-program-name">Personal 1-on-1 Training</div>
+        <div class="beast-program-desc">Individual coaching for adults and kids — strength, conditioning, programming, and nutrition guidance for adult clients looking to build real results.</div>
+      </div>
+      <div class="beast-program-card">
+        <div class="beast-program-name">Football</div>
+        <div class="beast-program-desc">Speed, agility, and sport-specific strength for skill positions at every level.</div>
+      </div>
+      <div class="beast-program-card">
+        <div class="beast-program-name">Speed &amp; Agility</div>
+        <div class="beast-program-desc">Explosive quickness, lateral movement, and conditioning for athletes of all ages.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="beast-stats">
+  <div class="beast-stat"><div class="beast-stat-num">20+</div><div class="beast-stat-label">Years Coaching</div></div>
+  <div class="beast-stat"><div class="beast-stat-num">500+</div><div class="beast-stat-label">Athletes Trained</div></div>
+  <div class="beast-stat"><div class="beast-stat-num">6+</div><div class="beast-stat-label">Ages Trained</div></div>
+  <div class="beast-stat"><div class="beast-stat-num">1-on-1</div><div class="beast-stat-label">Personalized Coaching</div></div>
+</div>
+
+<section id="about" class="beast-section beast-section--card">
+  <div class="beast-wrap beast-about-grid">
+    <div class="beast-about-content">
+      <p class="beast-section-label">Meet the Coach</p>
+      <h2 class="beast-section-title beast-about-title">Bastian Borowik</h2>
+      <p class="beast-about-body">With over two decades of hands-on coaching experience, Bastian Borowik built B.E.A.S.T. to give every athlete — from 6-year-old beginners to competitive adults — access to elite-level training. His approach is simple: master the fundamentals, build real confidence, and compete at your highest level.</p>
+    </div>
+    <div class="beast-about-photo">
+      <img src="https://cdn.prod.website-files.com/6a988ff4622d7065ea2aa7fd/6a9899fcecc551c1fa880ce4_beast-coach.jpg" alt="Bastian Borowik" class="beast-about-img">
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="beast-section beast-section--card">
+  <div class="beast-wrap">
+    <p class="beast-section-label">Training in Action</p>
+    <h2 class="beast-section-title">In The Gym. On The Field.</h2>
+    <div class="beast-gallery-grid">
+      <div class="beast-gallery-item"><img src="https://cdn.prod.website-files.com/6a988ff4622d7065ea2aa7fd/6a9899ff78087c990f32e3d4_beast-gallery-1.jpg" alt="Athlete training session" class="beast-gallery-img"></div>
+      <div class="beast-gallery-item"><img src="https://cdn.prod.website-files.com/6a988ff4622d7065ea2aa7fd/6a989a007b3f90a546be7024_beast-gallery-2.jpg" alt="Strength training in action" class="beast-gallery-img"></div>
+      <div class="beast-gallery-item"><img src="https://cdn.prod.website-files.com/6a988ff4622d7065ea2aa7fd/6a989a01dd8214a438368414_beast-gallery-3.jpg" alt="Speed and agility drills" class="beast-gallery-img"></div>
+      <div class="beast-gallery-item"><img src="https://cdn.prod.website-files.com/6a988ff4622d7065ea2aa7fd/6a989a027b3f90a546be70b1_beast-gallery-4.jpg" alt="Sport-specific coaching" class="beast-gallery-img"></div>
+      <div class="beast-gallery-item"><img src="https://cdn.prod.website-files.com/6a988ff4622d7065ea2aa7fd/6a989a032525c34fc451994c_beast-gallery-5.jpg" alt="Athletic conditioning" class="beast-gallery-img"></div>
+      <div class="beast-gallery-item"><img src="https://cdn.prod.website-files.com/6a988ff4622d7065ea2aa7fd/6a989a0528394777ce818e03_beast-gallery-6.jpg" alt="Personal training session" class="beast-gallery-img"></div>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="beast-section beast-section--bg">
+  <div class="beast-wrap">
+    <p class="beast-section-label">Why Train With Us</p>
+    <h2 class="beast-section-title">Built Different.</h2>
+    <div class="beast-why-grid">
+      <div class="beast-why-card">
+        <div class="beast-why-title">Technique First</div>
+        <div class="beast-why-desc">Every session starts with fundamentals. We build athletes from the ground up — no shortcuts.</div>
+      </div>
+      <div class="beast-why-card">
+        <div class="beast-why-title">All Ages Welcome</div>
+        <div class="beast-why-desc">From youth athletes ages 6+ to adults chasing real results. Every skill level has a place here.</div>
+      </div>
+      <div class="beast-why-card">
+        <div class="beast-why-title">Proven Results</div>
+        <div class="beast-why-desc">500+ athletes trained across baseball, softball, football, speed &amp; agility, and personal training.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stories" class="beast-section beast-section--bg">
+  <div class="beast-wrap">
+    <p class="beast-section-label">Success Stories</p>
+    <h2 class="beast-section-title">Real Athletes. Real Results.</h2>
+    <div class="beast-stories-grid">
+      <div class="beast-story-card">
+        <div class="beast-story-name">Jake M.</div>
+        <div class="beast-story-tag">Youth Baseball</div>
+        <p class="beast-story-body">Started training before his 12U season — went from JV bench to leading his team in batting average. Mechanics work and weekly hitting sessions transformed his approach at the plate.</p>
+      </div>
+      <div class="beast-story-card">
+        <div class="beast-story-name">Sarah L.</div>
+        <div class="beast-story-tag">High School Softball</div>
+        <p class="beast-story-body">Came in with confidence issues and an inconsistent swing. Three months of mechanics-focused training built her into a varsity starter and team captain.</p>
+      </div>
+      <div class="beast-story-card">
+        <div class="beast-story-name">Mike R.</div>
+        <div class="beast-story-tag">Adult Personal Training</div>
+        <p class="beast-story-body">Lost 25 pounds and added serious strength over 6 months of 1-on-1 sessions. First time he's seeing real results after years of inconsistent gym workouts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="spotlight" class="beast-section beast-spotlight">
+  <div class="beast-wrap">
+    <p class="beast-section-label">Athlete of the Month</p>
+    <h2 class="beast-section-title">In The Spotlight</h2>
+    <div class="beast-spotlight-card">
+      <div class="beast-spotlight-photo">
+        <img src="https://cdn.prod.website-files.com/6a988ff4622d7065ea2aa7fd/6a9899fdfb85b9bb8fc90a25_beast-athlete.jpg" alt="Athlete Name" class="beast-spotlight-img">
+        <div class="beast-spotlight-month">May 2026</div>
+      </div>
+      <div class="beast-spotlight-content">
+        <div class="beast-spotlight-badge">★ Athlete of the Month</div>
+        <h3 class="beast-spotlight-name">Athlete Name</h3>
+        <div class="beast-spotlight-tags"><span class="beast-spotlight-tag">Youth Baseball</span><span class="beast-spotlight-tag">Age 12</span></div>
+        <p class="beast-spotlight-body">Tell this athlete's story here — what they've worked on, how far they've come, and what earned them the spotlight this month.</p>
+        <div class="beast-spotlight-stats">
+          <div class="beast-spotlight-stat"><div class="beast-spotlight-stat-num">6</div><div class="beast-spotlight-stat-label">Months Training</div></div>
+          <div class="beast-spotlight-stat"><div class="beast-spotlight-stat-num">3x</div><div class="beast-spotlight-stat-label">Sessions / Week</div></div>
+          <div class="beast-spotlight-stat"><div class="beast-spotlight-stat-num">.380</div><div class="beast-spotlight-stat-label">Batting Avg</div></div>
+        </div>
+        <blockquote class="beast-spotlight-quote">Add a short quote from the athlete or their parent about training at B.E.A.S.T.</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="beast-section beast-section--card">
+  <div class="beast-wrap">
+    <p class="beast-section-label">Testimonials</p>
+    <h2 class="beast-section-title">What Parents &amp; Athletes Say</h2>
+    <div class="beast-testimonials-grid">
+      <div class="beast-testimonial">
+        <p class="beast-testimonial-text">My son started throwing in the high 40s MPH, and after just 3-4 sessions, he was consistently throwing in the 60s. That kind of jump, just from refining technique, speaks volumes about Bastian's eye and knowledge.</p>
+        <div class="beast-testimonial-author">— Wiff J., Parent of a 14-Year-Old Player</div>
+      </div>
+      <div class="beast-testimonial">
+        <p class="beast-testimonial-text">He went from being afraid of a baseball to catching them in just a few months. His hitting has improved 100% since we started lessons. Coach B knows how to push him to do his best while keeping the practices fun and supportive.</p>
+        <div class="beast-testimonial-author">— Kristi, Grandmother of Athlete</div>
+      </div>
+      <div class="beast-testimonial">
+        <p class="beast-testimonial-text">It's truly something special to see him work effectively with my 15-year-old, my 10-year-old, and even my little 6-year-old who's just starting out. He genuinely understands how to bring out the best in each of them.</p>
+        <div class="beast-testimonial-author">— Heather S., Parent of Three</div>
+      </div>
+      <div class="beast-testimonial">
+        <p class="beast-testimonial-text">Bastian has been working with my son since he was 7 years old, and the impact has been incredible. A great coach for young kids needs two things: real knowledge of the game and the ability to teach it in a fun, engaging way. Bastian excels at both.</p>
+        <div class="beast-testimonial-author">— Phillip R., Baseball Parent (7+ Years)</div>
+      </div>
+      <div class="beast-testimonial">
+        <p class="beast-testimonial-text">Through a combination of technical knowledge, motivational support, and genuine care, Coach Bastian helped both athletes achieve significant improvements in strength, agility, and overall performance in their respective sports programs. Their progress was not limited to physical gains; Coach Bastian also fostered confidence, discipline, and a strong work ethic in both athletes.</p>
+        <div class="beast-testimonial-author">— Jason P., Parent of Two Athletes</div>
+      </div>
+      <div class="beast-testimonial">
+        <p class="beast-testimonial-text">BEAST is the best spot for all around training! Bastian does a great job at adapting to different clients, he programmed excellent and thorough workouts for me and also able to adapt for training younger kids. Kept my boys engaged and challenged the whole time.</p>
+        <div class="beast-testimonial-author">— Ryan F., Adult Client &amp; Parent</div>
+      </div>
+      <div class="beast-testimonial">
+        <p class="beast-testimonial-text">This is the boys' second season working with him, and we couldn't be more thankful. He is so patient, attentive, and encouraging with the boys. He always takes the time to help correct any flaws he sees and explains things in a way they truly understand. The boys look forward to seeing him every week.</p>
+        <div class="beast-testimonial-author">— Gabrielle J., Parent of Two Baseball Players</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="beast-section beast-section--bg">
+  <div class="beast-wrap">
+    <p class="beast-section-label">Pricing</p>
+    <h2 class="beast-section-title">Training Packages</h2>
+    <p class="beast-section-sub">1-hour sessions. Pick the package that fits your goals. Shorter-session rates and team packages below.</p>
+    <div class="beast-pricing-grid">
+      <div class="beast-pricing-card">
+        <div class="beast-pricing-tier">Drop-In Session</div>
+        <div class="beast-pricing-price">$65<span class="beast-pricing-period">/session</span></div>
+        <div class="beast-pricing-save">Pay as you go</div>
+        <ul class="beast-pricing-features"><li class="beast-pricing-feature">1 training session</li><li class="beast-pricing-feature">Any program</li><li class="beast-pricing-feature">60 minutes</li></ul>
+        <a href="#schedule" class="beast-pricing-cta">Book Single Session</a>
+      </div>
+      <div class="beast-pricing-card beast-pricing-card--featured">
+        <div class="beast-pricing-badge">Most Popular</div>
+        <div class="beast-pricing-tier">4-Session Pack</div>
+        <div class="beast-pricing-price">$220<span class="beast-pricing-period">/pack</span></div>
+        <div class="beast-pricing-save">$55/session · Save $40</div>
+        <ul class="beast-pricing-features"><li class="beast-pricing-feature">4 training sessions</li><li class="beast-pricing-feature">60 minutes each</li><li class="beast-pricing-feature">Any program</li></ul>
+        <a href="#schedule" class="beast-pricing-cta">Get Started</a>
+      </div>
+      <div class="beast-pricing-card">
+        <div class="beast-pricing-tier">10-Session Pack</div>
+        <div class="beast-pricing-price">$500<span class="beast-pricing-period">/pack</span></div>
+        <div class="beast-pricing-save">$50/session · Save $150 (Best Value)</div>
+        <ul class="beast-pricing-features"><li class="beast-pricing-feature">10 training sessions</li><li class="beast-pricing-feature">60 minutes each</li><li class="beast-pricing-feature">Any program</li><li class="beast-pricing-feature">Priority scheduling</li></ul>
+        <a href="#schedule" class="beast-pricing-cta">Best Value</a>
+      </div>
+    </div>
+    <div class="beast-pricing-extras">
+      <a href="#schedule" class="beast-pricing-extra"><div class="beast-pricing-extra-name">30-min Session</div><div class="beast-pricing-extra-price">$40</div></a>
+      <a href="#schedule" class="beast-pricing-extra"><div class="beast-pricing-extra-name">45-min Session</div><div class="beast-pricing-extra-price">$55</div></a>
+      <a href="#schedule" class="beast-pricing-extra"><div class="beast-pricing-extra-name">Goal-Setting Consultation</div><div class="beast-pricing-extra-price">$50 · 45 min</div><div class="beast-pricing-extra-note">No commitment required</div></a>
+      <a href="#contact" class="beast-pricing-extra"><div class="beast-pricing-extra-name">Team Packages</div><div class="beast-pricing-extra-price">Custom Pricing</div><div class="beast-pricing-extra-note">Contact Bastian for details</div></a>
+    </div>
+  </div>
+</section>
+
+<section id="merch" class="beast-section beast-section--bg beast-merch">
+  <div class="beast-wrap">
+    <p class="beast-section-label">Merchandise</p>
+    <h2 class="beast-section-title">B.E.A.S.T. Gear</h2>
+    <p class="beast-merch-sub">Browse our gear lineup below. To purchase any item, contact Bastian directly — these are not available for online order.</p>
+    <div class="beast-merch-grid">
+      <div class="beast-merch-card"><div class="beast-merch-ph">👕</div><div class="beast-merch-name">B.E.A.S.T. T-Shirt</div><div class="beast-merch-note">Contact Bastian to purchase</div></div>
+      <div class="beast-merch-card"><div class="beast-merch-ph">🧥</div><div class="beast-merch-name">Training Hoodie</div><div class="beast-merch-note">Contact Bastian to purchase</div></div>
+      <div class="beast-merch-card"><div class="beast-merch-ph">🧢</div><div class="beast-merch-name">Logo Cap</div><div class="beast-merch-note">Contact Bastian to purchase</div></div>
+      <div class="beast-merch-card"><div class="beast-merch-ph">🎒</div><div class="beast-merch-name">Training Bag</div><div class="beast-merch-note">Contact Bastian to purchase</div></div>
+    </div>
+    <p class="beast-merch-foot">Product photos coming soon. Email <a href="mailto:borowikseliteathletics@gmail.com" class="beast-merch-link">borowikseliteathletics@gmail.com</a> to reserve yours.</p>
+  </div>
+</section>
+
+<section id="faq" class="beast-section beast-section--card">
+  <div class="beast-wrap">
+    <p class="beast-section-label">FAQ</p>
+    <h2 class="beast-section-title">Frequently Asked Questions</h2>
+    <div class="beast-faq-list">
+      <div class="beast-faq-item"><div class="beast-faq-q">What ages do you train?</div><div class="beast-faq-a">We work with athletes from ages 6 through adulthood. Youth, middle school, high school, and adult personal training are all available.</div></div>
+      <div class="beast-faq-item"><div class="beast-faq-q">Where are sessions held?</div><div class="beast-faq-a">Sessions take place at our training facility. See the Location section below for the full address and directions.</div></div>
+      <div class="beast-faq-item"><div class="beast-faq-q">How long is each session?</div><div class="beast-faq-a">Sessions are available in 30-minute ($40), 45-minute ($55), and 60-minute ($65) formats depending on the program and athlete.</div></div>
+      <div class="beast-faq-item"><div class="beast-faq-q">How is availability determined?</div><div class="beast-faq-a">A combination of online scheduling and in-person scheduling. Training schedules are formed weekly — contact Bastian to confirm open slots for the coming week.</div></div>
+      <div class="beast-faq-item"><div class="beast-faq-q">Do you offer group or team training?</div><div class="beast-faq-a">Yes — team packages are available with custom pricing. Contact Bastian directly to discuss your team's needs.</div></div>
+      <div class="beast-faq-item"><div class="beast-faq-q">What should my child bring?</div><div class="beast-faq-a">Athletic clothing, sneakers (or cleats for field work), a water bottle, and any sport-specific gear (glove, bat, etc.). If equipment is forgotten, Bastian has gear on hand to use for the session.</div></div>
+      <div class="beast-faq-item"><div class="beast-faq-q">What's your cancellation policy?</div><div class="beast-faq-a">We ask for at least 24 hours notice for cancellations. Sessions cancelled with less notice may be charged.</div></div>
+      <div class="beast-faq-item"><div class="beast-faq-q">Is the first session free?</div><div class="beast-faq-a">No — the first session is not free. If you want to meet Bastian and set goals before committing to training, book a 45-minute goal-setting consultation for $50. There's no commitment required after the consultation.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="location" class="beast-section beast-section--bg">
+  <div class="beast-wrap">
+    <p class="beast-section-label">Location</p>
+    <h2 class="beast-section-title">Where We Train</h2>
+    <div class="beast-location-grid">
+      <div class="beast-location-info">
+        <div class="beast-location-block"><div class="beast-location-title">B.E.A.S.T. Training Facility</div><p class="beast-location-text">1558 Bridgewood Rd<br>Clarksville, TN 37040</p></div>
+        <div class="beast-location-block"><div class="beast-location-title">Hours</div><p class="beast-location-text">Monday – Friday: 10:00 AM – 9:00 PM<br>Saturday: 7:00 AM – 3:00 PM<br>Sunday: Closed</p></div>
+        <div class="beast-location-block"><div class="beast-location-title">Service Area</div><p class="beast-location-text beast-location-text--muted">Serving athletes throughout the region — including youth and high school programs in surrounding towns.</p></div>
+      </div>
+      <div class="beast-location-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3206.2573112360897!2d-87.38180872368031!3d36.523786183231394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8864d9d8f7647d4b%3A0x504016d0c3d9a99b!2s1558%20Bridgewood%20Rd%2C%20Clarksville%2C%20TN%2037040!5e0!3m2!1sen!2sus!4v1776190381780!5m2!1sen!2sus" title="Map showing B.E.A.S.T. Training Facility at 1558 Bridgewood Rd, Clarksville, TN" class="beast-location-iframe" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="schedule" class="beast-section beast-section--card">
+  <div class="beast-wrap">
+    <p class="beast-section-label">Pick a Time</p>
+    <h2 class="beast-section-title">Live Availability</h2>
+    <p class="beast-section-sub">See open training slots in real time. Click to book directly from the calendar below.</p>
+    <div class="beast-schedule-ph">
+      <span class="beast-schedule-ph-title">[ Booking Calendar Will Embed Here ]</span>
+      <small class="beast-schedule-ph-note">Cal.com / Acuity Scheduling</small>
+    </div>
+  </div>
+</section>
+
+<div id="booking" class="beast-book-band">
+  <div class="beast-book-text">Ready to unlock your potential?</div>
+  <a href="#pricing" class="beast-book-btn">Schedule Your First Session →</a>
+</div>
+
+<section id="contact" class="beast-section beast-section--bg">
+  <div class="beast-wrap">
+    <p class="beast-section-label">Contact</p>
+    <h2 class="beast-section-title">Get In Touch</h2>
+    <div class="beast-contact-grid">
+      <div class="beast-contact-left">
+        <div class="beast-contact-info">
+          <div class="beast-contact-item"><span class="beast-contact-icon">✉</span><div class="beast-contact-item-body"><div class="beast-contact-label">Email</div><div class="beast-contact-value"><a href="mailto:borowikseliteathletics@gmail.com" class="beast-contact-link">borowikseliteathletics@gmail.com</a></div></div></div>
+          <div class="beast-contact-item"><span class="beast-contact-icon">📍</span><div class="beast-contact-item-body"><div class="beast-contact-label">Location</div><div class="beast-contact-value">1558 Bridgewood Road</div></div></div>
+          <div class="beast-contact-item"><span class="beast-contact-icon">🕐</span><div class="beast-contact-item-body"><div class="beast-contact-label">Hours</div><div class="beast-contact-value">Mon–Fri 10 AM – 9 PM · Sat 7 AM – 3 PM · Closed Sun</div></div></div>
+        </div>
+        <!-- Native Webflow form. Form name: "B.E.A.S.T. Contact".
+             Success message: "Thanks — your message was sent. Bastian will be in touch soon."
+             Error message: "Something went wrong. Email borowikseliteathletics@gmail.com instead."
+             If whtml does not create a FormWrapper here, rebuild with data_element_builder (see BUILD-PLAN step 4). -->
+        <form name="B.E.A.S.T. Contact" class="beast-form">
+          <div class="beast-field"><label for="beast-name" class="beast-field-label">Name</label><input type="text" id="beast-name" name="name" placeholder="Your name" required class="beast-input"></div>
+          <div class="beast-field"><label for="beast-email" class="beast-field-label">Email</label><input type="email" id="beast-email" name="email" placeholder="you@email.com" required class="beast-input"></div>
+          <div class="beast-field"><label for="beast-phone" class="beast-field-label">Phone</label><input type="tel" id="beast-phone" name="phone" placeholder="(555) 123-4567" class="beast-input"></div>
+          <div class="beast-field"><label for="beast-message" class="beast-field-label">Message</label><textarea id="beast-message" name="message" rows="4" placeholder="Tell us about your goals..." required class="beast-input beast-textarea"></textarea></div>
+          <input type="submit" value="Send Message" class="beast-form-submit">
+        </form>
+      </div>
+      <div class="beast-contact-right">
+        <div class="beast-forms-block">
+          <h3 class="beast-forms-title">Forms &amp; Documents</h3>
+          <p class="beast-forms-desc">Save time at your first session. Download these forms in advance:</p>
+          <div class="beast-forms-list">
+            <a href="#" class="beast-form-dl"><span class="beast-form-dl-icon">📄</span><div class="beast-form-dl-body"><div class="beast-form-dl-name">Liability Waiver</div><div class="beast-form-dl-fmt">PDF Download</div></div></a>
+            <a href="#" class="beast-form-dl"><span class="beast-form-dl-icon">📄</span><div class="beast-form-dl-body"><div class="beast-form-dl-name">Athlete Intake Form</div><div class="beast-form-dl-fmt">PDF Download</div></div></a>
+            <a href="#" class="beast-form-dl"><span class="beast-form-dl-icon">📄</span><div class="beast-form-dl-body"><div class="beast-form-dl-name">Medical Information Form</div><div class="beast-form-dl-fmt">PDF Download</div></div></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="beast-footer">
+  <div class="beast-footer-content">
+    <div class="beast-footer-brand">
+      <img src="https://cdn.prod.website-files.com/6a988ff4622d7065ea2aa7fd/6a9899e02e54af9899c84805_beast-logo.png" alt="B.E.A.S.T." class="beast-footer-logo">
+      <div class="beast-footer-tagline">Borowik's Elite Athletic &amp; Strength Training</div>
+      <div class="beast-footer-email">✉ borowikseliteathletics@gmail.com</div>
+    </div>
+    <div class="beast-footer-links">
+      <a href="#about" class="beast-footer-link">About</a>
+      <a href="#programs" class="beast-footer-link">Training</a>
+      <a href="#why" class="beast-footer-link">Why B.E.A.S.T.</a>
+      <a href="#pricing" class="beast-footer-link">Pricing</a>
+    </div>
+  </div>
+  <div class="beast-footer-bottom">© 2026 B.E.A.S.T. All rights reserved.</div>
+</footer>
+</body></html>

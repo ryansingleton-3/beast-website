@@ -1,0 +1,15 @@
+<!-- Site settings → Custom code → Head (set via data_scripts_tool > set_site_freeform_code, location "head") -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Base type — same as the Shopify theme (16px root, Barlow body). */
+  html { font-size: 100%; }
+  body { margin: 0; background: #f5f6f7; color: #111111; font-family: 'Barlow', sans-serif; font-weight: 400; font-size: 1rem; line-height: 1.7; }
+  h1, h2, h3 { font-family: 'Rubik Dirt', cursive; text-transform: uppercase; font-weight: 400; margin: 0; }
+  p { margin: 0; }
+  /* Ticker scroll — @keyframes are not allowed inside whtml css, so they live here. */
+  @keyframes beast-ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  .beast-ticker-track { animation: beast-ticker-scroll 30s linear infinite; }
+  @media (prefers-reduced-motion: reduce) { .beast-ticker-track { animation: none; } }
+</style>

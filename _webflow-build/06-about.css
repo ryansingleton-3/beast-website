@@ -1,0 +1,6 @@
+.beast-about-grid { display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 4rem; column-gap: 4rem; grid-row-gap: 2.5rem; row-gap: 2.5rem; align-items: center; }
+.beast-about-title { margin-bottom: 1.5rem; }
+.beast-about-body { font-size: 1rem; color: #666666; line-height: 1.8; max-width: 520px; }
+.beast-about-photo { border-width: 1px; border-style: solid; border-color: #dde3ea; border-left-width: 3px; border-left-color: #8AB9E3; overflow: hidden; }
+.beast-about-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media screen and (max-width: 767px) { .beast-about-grid { grid-template-columns: 1fr; } }

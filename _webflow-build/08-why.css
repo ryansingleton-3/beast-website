@@ -1,0 +1,6 @@
+.beast-why-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-column-gap: 2rem; column-gap: 2rem; grid-row-gap: 2rem; row-gap: 2rem; }
+.beast-why-card { padding-top: 2rem; padding-bottom: 2rem; padding-left: 2rem; padding-right: 2rem; background-color: #ffffff; border-width: 1px; border-style: solid; border-color: #dde3ea; border-top-width: 3px; border-top-color: #8AB9E3; }
+.beast-why-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.05rem; letter-spacing: 2px; text-transform: uppercase; color: #111111; margin-bottom: 0.75rem; }
+.beast-why-desc { font-size: 0.9rem; color: #666666; line-height: 1.7; }
+@media screen and (max-width: 767px) { .beast-why-grid { grid-template-columns: 1fr 1fr; } }
+@media screen and (max-width: 479px) { .beast-why-grid { grid-template-columns: 1fr; } }

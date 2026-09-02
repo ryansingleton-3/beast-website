@@ -1,0 +1,8 @@
+.beast-stories-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-column-gap: 2rem; column-gap: 2rem; grid-row-gap: 2rem; row-gap: 2rem; }
+.beast-story-card { padding-top: 2rem; padding-bottom: 2rem; padding-left: 2rem; padding-right: 2rem; background-color: #ffffff; border-width: 1px; border-style: solid; border-color: #dde3ea; border-left-width: 3px; border-left-color: #8AB9E3; }
+.beast-story-card:hover { box-shadow: 0 4px 16px rgba(138, 185, 227, 0.08); }
+.beast-story-name { font-family: 'Rubik Dirt', cursive; font-size: 1.6rem; letter-spacing: 1px; text-transform: uppercase; color: #111111; margin-bottom: 0.3rem; }
+.beast-story-tag { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: #8AB9E3; border-width: 1px; border-style: solid; border-color: rgba(138, 185, 227, 0.4); padding-top: 0.25rem; padding-bottom: 0.25rem; padding-left: 0.6rem; padding-right: 0.6rem; margin-bottom: 1rem; }
+.beast-story-body { font-size: 0.92rem; color: #666666; line-height: 1.7; }
+@media screen and (max-width: 767px) { .beast-stories-grid { grid-template-columns: 1fr; } }
+@media screen and (max-width: 479px) { .beast-story-card { padding-top: 1.5rem; padding-bottom: 1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; } }

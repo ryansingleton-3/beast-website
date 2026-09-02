@@ -1,0 +1,11 @@
+.beast-footer { background-color: #111111; padding-top: 4rem; padding-bottom: 2rem; padding-left: 80px; padding-right: 80px; }
+.beast-footer-content { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 3rem; grid-column-gap: 2rem; column-gap: 2rem; grid-row-gap: 2rem; row-gap: 2rem; }
+.beast-footer-logo { height: 90px; width: auto; display: block; margin-bottom: 1rem; }
+.beast-footer-tagline { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: #555555; max-width: 300px; }
+.beast-footer-email { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: #8AB9E3; margin-top: 0.75rem; }
+.beast-footer-links { display: flex; grid-column-gap: 2rem; column-gap: 2rem; grid-row-gap: 1rem; row-gap: 1rem; flex-wrap: wrap; }
+.beast-footer-link { color: #888888; text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
+.beast-footer-link:hover { color: #8AB9E3; }
+.beast-footer-bottom { border-top-width: 1px; border-top-style: solid; border-top-color: #222222; padding-top: 1.5rem; text-align: center; font-size: 0.78rem; color: #555555; letter-spacing: 1px; }
+@media screen and (max-width: 767px) { .beast-footer { padding-top: 3rem; padding-left: 40px; padding-right: 40px; } .beast-footer-content { flex-direction: column; align-items: flex-start; } }
+@media screen and (max-width: 479px) { .beast-footer { padding-top: 2.5rem; padding-bottom: 1.5rem; padding-left: 20px; padding-right: 20px; } }

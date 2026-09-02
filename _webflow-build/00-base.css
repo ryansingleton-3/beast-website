@@ -1,0 +1,19 @@
+.beast-section { padding-top: 5rem; padding-bottom: 5rem; padding-left: 80px; padding-right: 80px; }
+.beast-section--card { background-color: #ffffff; }
+.beast-section--bg { background-color: #f5f6f7; }
+.beast-wrap { max-width: 1280px; margin-left: auto; margin-right: auto; }
+.beast-section-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 5px; text-transform: uppercase; color: #8AB9E3; margin-bottom: 0.6rem; }
+.beast-section-title { font-family: 'Rubik Dirt', cursive; font-size: 3rem; line-height: 1.05; letter-spacing: 2px; text-transform: uppercase; color: #111111; margin-bottom: 2.5rem; }
+.beast-section-sub { font-family: 'Barlow', sans-serif; font-size: 1rem; color: #666666; max-width: 620px; margin-top: -1.5rem; margin-bottom: 2.5rem; line-height: 1.7; }
+.beast-btn-primary { display: inline-block; background-color: #8AB9E3; color: #ffffff; padding-top: 0.85rem; padding-bottom: 0.85rem; padding-left: 2rem; padding-right: 2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 3px; font-size: 0.9rem; text-transform: uppercase; text-decoration: none; border-style: none; cursor: pointer; }
+.beast-btn-primary:hover { background-color: #6C9DC6; }
+.beast-btn-outline { display: inline-block; background-color: transparent; color: #8AB9E3; padding-top: 0.85rem; padding-bottom: 0.85rem; padding-left: 2rem; padding-right: 2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 3px; font-size: 0.9rem; text-transform: uppercase; text-decoration: none; border-width: 1px; border-style: solid; border-color: #8AB9E3; cursor: pointer; }
+.beast-btn-outline:hover { background-color: rgba(138, 185, 227, 0.08); }
+@media screen and (max-width: 767px) {
+  .beast-section { padding-top: 4rem; padding-bottom: 4rem; padding-left: 40px; padding-right: 40px; }
+  .beast-section-title { font-size: 2.5rem; }
+}
+@media screen and (max-width: 479px) {
+  .beast-section { padding-top: 3rem; padding-bottom: 3rem; padding-left: 20px; padding-right: 20px; }
+  .beast-section-title { font-size: 2.2rem; }
+}
